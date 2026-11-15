@@ -1,0 +1,125 @@
+table dim_product
+	lineageTag: 860dc916-4fba-49a1-8698-ab175313ebbc
+
+	column product_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 86413ded-70ee-4141-902d-e6ad26ca3093
+		summarizeBy: none
+		sourceColumn: product_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 135ade77-37ee-4e78-b07e-41678fb92f1d
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_pt
+		dataType: string
+		lineageTag: 095e9541-0bcc-49eb-97f2-efeda3d3ff04
+		summarizeBy: none
+		sourceColumn: category_pt
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_en
+		dataType: string
+		lineageTag: f8609279-99b3-44e9-92aa-b770bf0334d4
+		summarizeBy: none
+		sourceColumn: category_en
+
+		annotation SummarizationSetBy = Automatic
+
+	column macro_category
+		dataType: string
+		lineageTag: 71ad7077-ff46-4baa-8df1-52d26d73fab6
+		summarizeBy: none
+		sourceColumn: macro_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column weight_g
+		dataType: double
+		lineageTag: b84e2c30-9f7f-4668-afb6-74ba114a9dee
+		summarizeBy: none
+		sourceColumn: weight_g
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume_cm3
+		dataType: double
+		lineageTag: 749453b2-bf13-4250-b7b1-af4689589583
+		summarizeBy: none
+		sourceColumn: volume_cm3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column photos_qty
+		dataType: int64
+		formatString: 0
+		lineageTag: d8269ef2-ddc8-4fdc-a585-85965c2ec89a
+		summarizeBy: none
+		sourceColumn: photos_qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column dims_imputed
+		dataType: int64
+		formatString: 0
+		lineageTag: 148e95bc-37c3-4477-a8da-fb7cbd25d72a
+		summarizeBy: none
+		sourceColumn: dims_imputed
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Display name of the product macro category (uncategorized shown as Uncategorized).
+	column macro_name = IF ( dim_product[macro_category] = "uncategorized", "Uncategorized", dim_product[macro_category] )
+		dataType: string
+		lineageTag: 0b07a390-3a6b-4f43-965b-f4a642105bdb
+		summarizeBy: none
+
+	/// Display name of the product category: category_en with spaces instead of underscores and a capital first letter.
+	column category_name = VAR _t = SUBSTITUTE ( dim_product[category_en], "_", " " ) RETURN UPPER ( LEFT ( _t, 1 ) ) & MID ( _t, 2, 200 )
+		dataType: string
+		lineageTag: adc799b3-ccdc-4c5e-b670-593a073b3999
+		summarizeBy: none
+
+	hierarchy Product
+		lineageTag: b670ea5a-842f-4995-b2ec-9268c5ba643e
+
+		level 'Macro category'
+			lineageTag: 528b8997-c0bb-48bc-ae68-0b3eece11902
+			column: macro_name
+
+		level Category
+			lineageTag: 524ebfd7-6f72-4b82-a56f-fbc7a3d119eb
+			column: category_name
+
+	partition dim_product = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataPath & "dim_product.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {
+				        {"product_key", Int64.Type}, {"product_id", type text}, {"category_pt", type text},
+				        {"category_en", type text}, {"macro_category", type text}, {"weight_g", type number},
+				        {"volume_cm3", type number}, {"photos_qty", Int64.Type}, {"dims_imputed", Int64.Type}
+				    }, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

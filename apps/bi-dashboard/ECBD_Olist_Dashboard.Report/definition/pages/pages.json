@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
+  "pageOrder": [
+    "p1_summary",
+    "p2_logistics",
+    "p3_geo_product",
+    "p4_state_detail",
+    "p5_tooltip"
+  ],
+  "activePageName": "p4_state_detail"
+}

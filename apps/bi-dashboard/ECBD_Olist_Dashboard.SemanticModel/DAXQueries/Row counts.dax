@@ -1,0 +1,14 @@
+EVALUATE
+{
+    ( "fact_order_items", COUNTROWS ( fact_order_items ) ),
+    ( "dim_date", COUNTROWS ( dim_date ) ),
+    ( "dim_customer", COUNTROWS ( dim_customer ) ),
+    ( "dim_seller", COUNTROWS ( dim_seller ) ),
+    ( "dim_product", COUNTROWS ( dim_product ) ),
+    ( "dim_state", COUNTROWS ( dim_state ) ),
+    ( "dim_payment_type", COUNTROWS ( dim_payment_type ) ),
+    ( "dim_order_status", COUNTROWS ( dim_order_status ) ),
+    ( "null delivered_date_key", COUNTROWS ( FILTER ( fact_order_items, ISBLANK ( fact_order_items[delivered_date_key] ) ) ) ),
+    ( "null delay_band", COUNTROWS ( FILTER ( fact_order_items, ISBLANK ( fact_order_items[delay_band] ) ) ) ),
+    ( "null is_late", COUNTROWS ( FILTER ( fact_order_items, ISBLANK ( fact_order_items[is_late] ) ) ) )
+}

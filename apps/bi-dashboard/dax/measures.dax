@@ -1,0 +1,457 @@
+-- =====================================================================================
+-- ECBD Olist Insights - DAX measures of the Power BI semantic model
+-- =====================================================================================
+-- Source of truth: the TMDL file
+--   apps/bi-dashboard/ECBD_Olist_Dashboard.SemanticModel/definition/tables/_Measures.tmdl
+-- This file is a faithful, commented copy for reading and review. Power BI does not load it.
+-- Home table of every measure: _Measures (calculated table ROW ( "x", 0 ), column x hidden).
+-- Grouped by display folder, in the same order as the TMDL file.
+--
+-- Conventions
+--   * Fact grain = one order line: order-level counts use DISTINCTCOUNT of order_id and
+--     order-level averages use AVERAGEX ( VALUES ( order_id ), CALCULATE ( MAX ( ... ) ) ).
+--   * Own filters are wrapped in KEEPFILTERS so user filters (e.g. late only) are respected.
+--   * Rates: blank when the denominator is blank or 0; 0 when the numerator is empty.
+--   * The model culture is es-MX: every FORMAT passes "en-US" as its third argument.
+--   * Presentation measures never return colours; colours come from formatting rules.
+--
+-- How to regenerate / compare
+--   1. Edit measures in the TMDL file (Power BI Desktop closed) or in Desktop and save.
+--   2. Copy each changed expression here as `Measure Name = <expression>` (same text; only
+--      the indentation may differ: continuation lines are indented with 4 spaces).
+--   3. Compare both files expression by expression with whitespace normalized; there must
+--      be no differences and the same set of measure names.
+-- =====================================================================================
+
+-- ===== Commercial =====
+
+-- GMV
+--   What: gross merchandise value = sum of item price (not item_total; freight excluded).
+--   Grain: sum over order lines (fact grain = one order line); no distinct count needed.
+--   Filter: non-canceled orders (KEEPFILTERS keeps user filters). Blank: blank without lines.
+GMV = CALCULATE ( SUM ( fact_order_items[price] ), KEEPFILTERS ( dim_order_status[order_status] <> "canceled" ) )
+
+-- Freight
+--   What: sum of freight_value.
+--   Grain: sum over order lines. Filter: non-canceled orders (KEEPFILTERS).
+--   Blank: blank without lines.
+Freight = CALCULATE ( SUM ( fact_order_items[freight_value] ), KEEPFILTERS ( dim_order_status[order_status] <> "canceled" ) )
+
+-- Freight Ratio
+--   What: Freight / GMV in the current context.
+--   Denominator: GMV (non-canceled). Blank: DIVIDE returns blank when GMV is blank or 0.
+Freight Ratio = DIVIDE ( [Freight], [GMV] )
+
+-- Orders
+--   What: number of non-canceled orders.
+--   Grain: DISTINCTCOUNT of order_id because the fact grain is one order line (an order has
+--   several lines). Filter: order_status <> canceled (KEEPFILTERS).
+Orders = CALCULATE ( DISTINCTCOUNT ( fact_order_items[order_id] ), KEEPFILTERS ( dim_order_status[order_status] <> "canceled" ) )
+
+-- All Orders
+--   What: number of orders of every status, canceled included.
+--   Grain: DISTINCTCOUNT of order_id (one order = several lines).
+All Orders = DISTINCTCOUNT ( fact_order_items[order_id] )
+
+-- Items
+--   What: number of order lines (rows of fact_order_items), every status.
+Items = COUNTROWS ( fact_order_items )
+
+-- Avg Ticket
+--   What: (GMV + Freight) / Orders.
+--   Denominator: Orders (distinct non-canceled orders). Blank: DIVIDE blank when Orders = 0.
+--   Note: under a category or seller context it is a partial ticket (only those lines).
+Avg Ticket = DIVIDE ( [GMV] + [Freight], [Orders] )
+
+-- Customers
+--   What: distinct customer_unique_id with order lines in the context, every status.
+--   Grain: DISTINCTCOUNT on dim_customer filtered through the fact table (expanded table),
+--   so no bidirectional relationship is needed.
+Customers = CALCULATE ( DISTINCTCOUNT ( dim_customer[customer_unique_id] ), fact_order_items )
+
+-- ===== Penetration =====
+
+-- Population
+--   What: 2018 IBGE population of the customer states with order lines in the context.
+--   Grain: SUM over dim_state rows reached through the fact table (expanded table).
+Population = CALCULATE ( SUM ( dim_state[population_2018] ), fact_order_items )
+
+-- Orders per 100k
+--   What: Orders * 100,000 / Population.
+--   Denominator: Population. Blank: DIVIDE blank when Population is blank or 0.
+Orders per 100k = DIVIDE ( [Orders] * 100000, [Population] )
+
+-- ===== Logistics =====
+
+-- Evaluated Orders
+--   What: orders with a non-blank is_late flag (delivered with a valid delivery date).
+--   Grain: DISTINCTCOUNT of order_id (lines of one order share is_late).
+--   Use: denominator of Late Rate %.
+Evaluated Orders = CALCULATE ( DISTINCTCOUNT ( fact_order_items[order_id] ), KEEPFILTERS ( NOT ISBLANK ( fact_order_items[is_late] ) ) )
+
+-- Late Orders
+--   What: orders delivered after the estimated date (is_late = 1).
+--   Grain: DISTINCTCOUNT of order_id. Filter wrapped in KEEPFILTERS.
+Late Orders = CALCULATE ( DISTINCTCOUNT ( fact_order_items[order_id] ), KEEPFILTERS ( fact_order_items[is_late] = 1 ) )
+
+-- Late Rate %
+--   What: Late Orders / Evaluated Orders.
+--   Denominator: Evaluated Orders. Blank when there are no evaluated orders;
+--   0 when there are evaluated orders but none is late (COALESCE).
+Late Rate % =
+    VAR _den = [Evaluated Orders]
+    RETURN IF ( _den > 0, DIVIDE ( COALESCE ( [Late Orders], 0 ), _den ) )
+
+-- Avg Delivery Days
+--   What: average delivery_days per order.
+--   Grain: per-order average (AVERAGEX over order_id, MAX over its lines) so orders
+--   with many lines do not weigh more. AVERAGEX ignores blank values.
+Avg Delivery Days = AVERAGEX ( VALUES ( fact_order_items[order_id] ), CALCULATE ( MAX ( fact_order_items[delivery_days] ) ) )
+
+-- Avg Delay Days
+--   What: average delay_days per order (delivered minus estimated; negative = early).
+--   Grain: per-order average (AVERAGEX over order_id, MAX over its lines); blanks ignored.
+Avg Delay Days = AVERAGEX ( VALUES ( fact_order_items[order_id] ), CALCULATE ( MAX ( fact_order_items[delay_days] ) ) )
+
+-- Avg Distance km
+--   What: average customer-seller haversine distance per order.
+--   Grain: per-order average (AVERAGEX over order_id, MAX of distance_km); blank
+--   distances are ignored.
+Avg Distance km = AVERAGEX ( VALUES ( fact_order_items[order_id] ), CALCULATE ( MAX ( fact_order_items[distance_km] ) ) )
+
+-- ===== Satisfaction =====
+
+-- Avg Review
+--   What: average review_score per order, every order status.
+--   Grain: per-order average (one review per order; lines repeat it); orders without
+--   a review are ignored.
+Avg Review = AVERAGEX ( VALUES ( fact_order_items[order_id] ), CALCULATE ( MAX ( fact_order_items[review_score] ) ) )
+
+-- Reviewed Orders
+--   What: orders with a non-blank review_score, every status.
+--   Grain: DISTINCTCOUNT of order_id. Use: denominator of Negative Review %.
+Reviewed Orders = CALCULATE ( DISTINCTCOUNT ( fact_order_items[order_id] ), KEEPFILTERS ( NOT ISBLANK ( fact_order_items[review_score] ) ) )
+
+-- Negative Review %
+--   What: orders with is_negative_review = 1 / Reviewed Orders.
+--   Grain: distinct orders in numerator and denominator.
+--   Blank without reviewed orders; 0 when none is negative.
+Negative Review % =
+    VAR _den = [Reviewed Orders]
+    VAR _num = CALCULATE ( DISTINCTCOUNT ( fact_order_items[order_id] ), KEEPFILTERS ( fact_order_items[is_negative_review] = 1 ) )
+    RETURN IF ( _den > 0, DIVIDE ( COALESCE ( _num, 0 ), _den ) )
+
+-- Review Gap vs National
+--   What: Avg Review in context minus the national Avg Review (filters on
+--   dim_customer and dim_state removed; every other filter kept).
+--   Blank: blank if either term is blank.
+Review Gap vs National =
+    VAR _local = [Avg Review]
+    VAR _national = CALCULATE ( [Avg Review], REMOVEFILTERS ( dim_customer ), REMOVEFILTERS ( dim_state ) )
+    RETURN IF ( NOT ISBLANK ( _local ) && NOT ISBLANK ( _national ), _local - _national )
+
+-- ===== Cost =====
+
+-- Late GMV
+--   What: GMV (non-canceled) of late orders (is_late = 1).
+--   Grain: line-level sum through GMV. Filter wrapped in KEEPFILTERS.
+Late GMV = CALCULATE ( [GMV], KEEPFILTERS ( fact_order_items[is_late] = 1 ) )
+
+-- Late GMV %
+--   What: Late GMV / GMV of evaluated orders (is_late not blank) = % of delivered GMV;
+--   excludes deliveries without a valid date.
+--   Blank when the evaluated GMV is blank or 0; 0 when there is no late GMV.
+Late GMV % =
+    VAR _den = CALCULATE ( [GMV], KEEPFILTERS ( NOT ISBLANK ( fact_order_items[is_late] ) ) )
+    RETURN IF ( _den > 0, DIVIDE ( COALESCE ( [Late GMV], 0 ), _den ) )
+
+-- Avg Review On Time
+--   What: Avg Review of orders delivered on time (is_late = 0).
+--   Grain: per-order average through Avg Review.
+--   Strict equality (==): in DAX BLANK = 0 is true, so "= 0" would also keep the
+--   orders with a blank is_late (not evaluated). Found by the T5-C cross-check.
+Avg Review On Time = CALCULATE ( [Avg Review], KEEPFILTERS ( fact_order_items[is_late] == 0 ) )
+
+-- Avg Review Late
+--   What: Avg Review of late orders (is_late = 1).
+--   Grain: per-order average through Avg Review.
+Avg Review Late = CALCULATE ( [Avg Review], KEEPFILTERS ( fact_order_items[is_late] = 1 ) )
+
+-- Review Drop Late
+--   What: Avg Review On Time minus Avg Review Late (stars lost when late).
+--   Blank: blank if either term is blank.
+Review Drop Late =
+    VAR _on = [Avg Review On Time]
+    VAR _late = [Avg Review Late]
+    RETURN IF ( NOT ISBLANK ( _on ) && NOT ISBLANK ( _late ), _on - _late )
+
+-- Negative Review % Late
+--   What: Negative Review % among late orders (is_late = 1).
+--   Grain: distinct orders through Negative Review %.
+Negative Review % Late = CALCULATE ( [Negative Review %], KEEPFILTERS ( fact_order_items[is_late] = 1 ) )
+
+-- Negative Review % On Time
+--   What: Negative Review % among orders delivered on time (is_late = 0).
+--   Grain: distinct orders through Negative Review %.
+--   Strict equality (==) excludes orders with a blank is_late (BLANK = 0 is true in DAX).
+Negative Review % On Time = CALCULATE ( [Negative Review %], KEEPFILTERS ( fact_order_items[is_late] == 0 ) )
+
+-- Repeat Customer Rate
+--   What: share of active customers (distinct customer_unique_id with at least one
+--   non-canceled order in the filtered context) that have 2 or more non-canceled
+--   orders in the same context. Orders per customer = DISTINCTCOUNT of order_id.
+--   Denominator: active customers (not Customers). Blank without active customers;
+--   0 when none repeats. Priority P2.
+Repeat Customer Rate =
+    VAR _customers =
+        CALCULATETABLE (
+            ADDCOLUMNS (
+                SUMMARIZE ( fact_order_items, dim_customer[customer_unique_id] ),
+                "@orders", CALCULATE ( DISTINCTCOUNT ( fact_order_items[order_id] ) )
+            ),
+            KEEPFILTERS ( dim_order_status[order_status] <> "canceled" )
+        )
+    VAR _active = COUNTROWS ( _customers )
+    VAR _repeat = COUNTROWS ( FILTER ( _customers, [@orders] >= 2 ) )
+    RETURN IF ( _active > 0, DIVIDE ( COALESCE ( _repeat, 0 ), _active ) )
+
+-- ===== Time =====
+
+-- GMV PY
+--   What: GMV of the same period of the previous year (SAMEPERIODLASTYEAR on the marked
+--   date table dim_date). Under year 2018 it compares against full-year 2017.
+GMV PY = CALCULATE ( [GMV], SAMEPERIODLASTYEAR ( dim_date[date] ) )
+
+-- GMV YoY %
+--   What: (GMV - GMV PY) / GMV PY.
+--   Denominator: GMV PY. Blank when GMV is blank or GMV PY is blank (never -100%).
+GMV YoY % =
+    VAR _cur = [GMV]
+    VAR _py = [GMV PY]
+    RETURN IF ( NOT ISBLANK ( _cur ), DIVIDE ( _cur - _py, _py ) )
+
+-- Orders by Delivery Date
+--   What: Orders by delivery date (USERELATIONSHIP activates the inactive
+--   delivered_date_key relationship only inside this measure).
+--   Grain: distinct orders through Orders.
+Orders by Delivery Date = CALCULATE ( [Orders], USERELATIONSHIP ( fact_order_items[delivered_date_key], dim_date[date_key] ) )
+
+-- Orders by Estimated Date
+--   What: Orders by estimated delivery date (USERELATIONSHIP on the inactive
+--   estimated_date_key relationship). Grain: distinct orders through Orders.
+Orders by Estimated Date = CALCULATE ( [Orders], USERELATIONSHIP ( fact_order_items[estimated_date_key], dim_date[date_key] ) )
+
+-- ===== Target =====
+
+-- Late Rate Target
+--   What: target selected in the Late rate target parameter (0-20%, step 1%);
+--   8% when nothing or several values are selected. Team assumption, not Olist data.
+Late Rate Target = SELECTEDVALUE ( 'Late Rate Target'[Target], 0.08 )
+
+-- Late Rate Variance
+--   What: Late Rate Target - Late Rate % (+ = better than target).
+--   Blank when Late Rate % is blank. Static format +0.0%; titles and axes say pp.
+Late Rate Variance =
+    VAR _rate = [Late Rate %]
+    RETURN IF ( NOT ISBLANK ( _rate ), [Late Rate Target] - _rate )
+
+-- ===== Presentation =====
+
+-- Late Rate Status
+--   What: status text of Late Rate % against the target, in percentage points (pp).
+--   Grain: reuses Late Rate % (distinct evaluated orders) and Late Rate Target.
+--   Blank: blank when Late Rate % is blank (no evaluated orders). Used in the page 1 KPI card.
+Late Rate Status =
+    VAR _rate = [Late Rate %]
+    VAR _target = [Late Rate Target]
+    VAR _pp = ABS ( _rate - _target ) * 100
+    RETURN IF ( NOT ISBLANK ( _rate ),
+        IF ( _rate > _target,
+            "above target by " & FORMAT ( _pp, "0.0", "en-US" ) & " pp",
+            "below target by " & FORMAT ( _pp, "0.0", "en-US" ) & " pp" ) )
+
+-- Late Filter Active
+--   What: 1 when the late-only filter (is_late = 1) is active, 0 otherwise.
+--   Grain: filter state only, no aggregation.
+--   Blank: never blank (0 by default). Drives the badge fill rule (no colour in DAX).
+Late Filter Active = IF ( ISFILTERED ( fact_order_items[is_late] ) && SELECTEDVALUE ( fact_order_items[is_late] ) = 1, 1, 0 )
+
+-- Late Filter Badge
+--   What: badge text while the late-only filter is active.
+--   Grain: reuses Late Filter Active.
+--   Blank: blank when the filter is not active.
+Late Filter Badge = IF ( [Late Filter Active] = 1, "Filter: late only" )
+
+-- State Detail Title
+--   What: dynamic title of the State detail drill-through page.
+--   Grain: single selected dim_customer[state_name].
+--   Blank: never blank; 'multiple states' when zero or several states are in context.
+State Detail Title = "State detail: " & SELECTEDVALUE ( dim_customer[state_name], "multiple states" )
+
+-- State Late Rank
+--   What: position by Late Rate % (descending) at the current Customer geography level
+--   (city, state_full or region), only among members with >= 30 Evaluated Orders.
+--   Ties: Evaluated Orders descending, then name ascending (state_full sorts like state_name:
+--   the ', Brazil' suffix is constant).
+--   Grain: Late Rate % and Evaluated Orders are distinct-order measures, evaluated per member
+--   of ALLSELECTED (so the user's slicers are respected).
+--   Blank: blank when the member has < 30 evaluated orders or no level is in scope.
+State Late Rank =
+    VAR _min = 30
+    VAR _rate = [Late Rate %]
+    VAR _eval = [Evaluated Orders]
+    RETURN
+    IF ( _eval >= _min,
+        SWITCH ( TRUE (),
+            ISINSCOPE ( dim_customer[city] ),
+                VAR _cur = SELECTEDVALUE ( dim_customer[city] )
+                VAR _t = FILTER ( ADDCOLUMNS ( ALLSELECTED ( dim_customer[city] ), "@r", [Late Rate %], "@e", [Evaluated Orders] ), [@e] >= _min )
+                RETURN 1 + COUNTROWS ( FILTER ( _t, [@r] > _rate || ( [@r] = _rate && [@e] > _eval ) || ( [@r] = _rate && [@e] = _eval && dim_customer[city] < _cur ) ) ),
+            ISINSCOPE ( dim_customer[state_full] ),
+                VAR _cur = SELECTEDVALUE ( dim_customer[state_full] )
+                VAR _t = FILTER ( ADDCOLUMNS ( ALLSELECTED ( dim_customer[state_full] ), "@r", [Late Rate %], "@e", [Evaluated Orders] ), [@e] >= _min )
+                RETURN 1 + COUNTROWS ( FILTER ( _t, [@r] > _rate || ( [@r] = _rate && [@e] > _eval ) || ( [@r] = _rate && [@e] = _eval && dim_customer[state_full] < _cur ) ) ),
+            ISINSCOPE ( dim_customer[region_name] ),
+                VAR _cur = SELECTEDVALUE ( dim_customer[region_name] )
+                VAR _t = FILTER ( ADDCOLUMNS ( ALLSELECTED ( dim_customer[region_name] ), "@r", [Late Rate %], "@e", [Evaluated Orders] ), [@e] >= _min )
+                RETURN 1 + COUNTROWS ( FILTER ( _t, [@r] > _rate || ( [@r] = _rate && [@e] > _eval ) || ( [@r] = _rate && [@e] = _eval && dim_customer[region_name] < _cur ) ) ) ) )
+
+-- Eligible Late States
+--   What: count of members of the current geography level with >= 30 Evaluated Orders.
+--   Grain: Evaluated Orders (distinct orders with is_late not blank) per member.
+--   Blank: blank when no member qualifies (COUNTROWS of an empty table); region level by default.
+Eligible Late States =
+    SWITCH ( TRUE (),
+        ISINSCOPE ( dim_customer[city] ), COUNTROWS ( FILTER ( ALLSELECTED ( dim_customer[city] ), [Evaluated Orders] >= 30 ) ),
+        ISINSCOPE ( dim_customer[state_full] ), COUNTROWS ( FILTER ( ALLSELECTED ( dim_customer[state_full] ), [Evaluated Orders] >= 30 ) ),
+        COUNTROWS ( FILTER ( ALLSELECTED ( dim_customer[region_name] ), [Evaluated Orders] >= 30 ) ) )
+
+-- Top 3 Flag
+--   What: 1 for the worst 3 members when more than 3 are eligible, 0 otherwise.
+--   Grain: reuses Eligible Late States and State Late Rank.
+--   Blank: never blank (0 by default). Drives the bar colour rule (no colour in DAX).
+Top 3 Flag = IF ( [Eligible Late States] > 3 && NOT ISBLANK ( [State Late Rank] ) && [State Late Rank] <= 3, 1, 0 )
+
+-- Sellers Without Coords Note
+--   What: number of sellers in context without coordinates, as text.
+--   Grain: rows of dim_seller (one per seller) filtered through the fact table (expanded table,
+--   no bidirectional relationship) and by blank lat or lng.
+--   Blank: never blank; 0 sellers when none is missing.
+Sellers Without Coords Note =
+    VAR _n = CALCULATE ( COUNTROWS ( dim_seller ), fact_order_items,
+                 KEEPFILTERS ( FILTER ( ALL ( dim_seller[lat], dim_seller[lng] ), ISBLANK ( dim_seller[lat] ) || ISBLANK ( dim_seller[lng] ) ) ) )
+    RETURN FORMAT ( COALESCE ( _n, 0 ), "#,0", "en-US" ) & " sellers without coordinates"
+
+-- Late GMV Note
+--   What: fixed explanatory text for Late GMV % (denominator = GMV of evaluated orders).
+--   Grain: constant.
+--   Blank: never blank.
+Late GMV Note = "Share of delivered GMV, excludes deliveries without a valid date"
+
+-- Black Friday GMV Point
+--   What: GMV only at the point that contains Black Friday 2017 (2017-11-24).
+--   Grain: reuses GMV (line level, non-canceled orders).
+--   Blank: blank at every other axis point. Annotation fallback only.
+Black Friday GMV Point = IF ( MIN ( dim_date[date] ) <= DATE ( 2017, 11, 24 ) && MAX ( dim_date[date] ) >= DATE ( 2017, 11, 24 ), [GMV] )
+
+-- Black Friday Late Rate Point
+--   What: Late Rate % only at the point that contains Black Friday 2017 (2017-11-24).
+--   Grain: reuses Late Rate % (distinct evaluated orders).
+--   Blank: blank at every other axis point. Annotation fallback only.
+Black Friday Late Rate Point = IF ( MIN ( dim_date[date] ) <= DATE ( 2017, 11, 24 ) && MAX ( dim_date[date] ) >= DATE ( 2017, 11, 24 ), [Late Rate %] )
+
+-- KPI Card Subtitle
+--   What: dynamic subtitle of the page 1 multi-row KPI card (Orders and Late Rate Target in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+KPI Card Subtitle = "Current filters: " & FORMAT ( [Orders], "#,0", "en-US" ) & " orders | late rate " & FORMAT ( [Late Rate %], "0.0%", "en-US" ) & ", " & [Late Rate Status] & " (target " & FORMAT ( [Late Rate Target], "0%", "en-US" ) & ")"
+
+-- GMV Monthly Subtitle
+--   What: dynamic subtitle of the page 1 monthly GMV line (GMV in context plus the note that YoY only exists for 2018).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+GMV Monthly Subtitle = "By purchase month | context GMV R$ " & FORMAT ( [GMV], "#,0", "en-US" ) & " | YoY only available for 2018"
+
+-- Late Rate Monthly Subtitle
+--   What: dynamic subtitle of the page 1 monthly Late Rate % line (Late Rate % in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Late Rate Monthly Subtitle = "By purchase month | context rate " & FORMAT ( [Late Rate %], "0.0%", "en-US" )
+
+-- Orders Map Subtitle
+--   What: dynamic subtitle of the page 1 Orders per 100k filled map (Orders per 100k in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Orders Map Subtitle = "Orders per 100k pop. in context: " & FORMAT ( [Orders per 100k], "#,0.0", "en-US" )
+
+-- Top10 Late Subtitle
+--   What: dynamic subtitle of the page 1 top 10 Late Rate % bars (whether the worst 3 are highlighted (more than 3 eligible members)).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Top10 Late Subtitle = IF ( [Eligible Late States] > 3, "Worst 3 in orange | states with at least 30 evaluated orders", "No highlight: fewer than 4 states with at least 30 evaluated orders" )
+
+-- Region Variance Subtitle
+--   What: dynamic subtitle of the page 1 Late Rate Variance by region bars (target and Late Rate % in context, and the sign convention).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Region Variance Subtitle = "Target " & FORMAT ( [Late Rate Target], "0%", "en-US" ) & " | context rate " & FORMAT ( [Late Rate %], "0.0%", "en-US" ) & " | + = better than target"
+
+-- Review Band Subtitle
+--   What: dynamic subtitle of the page 2 Avg Review by delay band columns (Avg Review in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Review Band Subtitle = "Context average review: " & FORMAT ( [Avg Review], "0.00", "en-US" ) & " stars"
+
+-- Delay Review Scatter Subtitle
+--   What: dynamic subtitle of the page 2 delay vs review scatter (Avg Delay Days and Avg Review in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Delay Review Scatter Subtitle = "Average delay " & FORMAT ( [Avg Delay Days], "0.0", "en-US" ) & " days | average review " & FORMAT ( [Avg Review], "0.00", "en-US" )
+
+-- Delay Map Subtitle
+--   What: dynamic subtitle of the page 2 Avg Delay Days filled map (Avg Delay Days in context and the sign convention).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Delay Map Subtitle = "Average delay " & FORMAT ( [Avg Delay Days], "0.0", "en-US" ) & " days (negative = early)"
+
+-- Heatmap Subtitle
+--   What: dynamic subtitle of the page 2 weekday x purchase hour heatmap (Orders in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Heatmap Subtitle = FORMAT ( [Orders], "#,0", "en-US" ) & " orders in context | purchase hour by weekday"
+
+-- Review Gap Subtitle
+--   What: dynamic subtitle of the page 2 Review Gap vs National bars (national Avg Review (customer geography filters removed) used as the reference of the gap).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Review Gap Subtitle = "Context national review: " & FORMAT ( CALCULATE ( [Avg Review], REMOVEFILTERS ( dim_customer ), REMOVEFILTERS ( dim_state ) ), "0.00", "en-US" )
+
+-- Sellers Map Subtitle
+--   What: dynamic subtitle of the page 3 seller bubble map (GMV in context and the number of sellers without coordinates).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Sellers Map Subtitle = "Context GMV R$ " & FORMAT ( [GMV], "#,0", "en-US" ) & " | " & [Sellers Without Coords Note]
+
+-- Treemap Subtitle
+--   What: dynamic subtitle of the page 3 macro category / category treemap (GMV in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Treemap Subtitle = "Context GMV R$ " & FORMAT ( [GMV], "#,0", "en-US" )
+
+-- Distance Scatter Subtitle
+--   What: dynamic subtitle of the page 3 distance vs freight ratio scatter (Avg Distance km and Freight Ratio in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Distance Scatter Subtitle = "Average distance " & FORMAT ( [Avg Distance km], "#,0", "en-US" ) & " km | freight " & FORMAT ( [Freight Ratio], "0.0%", "en-US" ) & " of GMV"
+
+-- Payment Mix Subtitle
+--   What: dynamic subtitle of the page 3 100% stacked payment type columns (Orders in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Payment Mix Subtitle = FORMAT ( [Orders], "#,0", "en-US" ) & " orders in context"
+
+-- Top Categories Subtitle
+--   What: dynamic subtitle of the page 3 top 10 categories table (GMV in context).
+--   Grain: reuses KPI measures (distinct orders / per-order averages as defined there).
+--   Blank: never blank; an empty context shows empty numbers (FORMAT of BLANK is "").
+Top Categories Subtitle = "Context GMV R$ " & FORMAT ( [GMV], "#,0", "en-US" ) & " | top 10 by GMV"

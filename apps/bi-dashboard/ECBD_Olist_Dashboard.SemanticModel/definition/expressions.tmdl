@@ -1,0 +1,9 @@
+expression DataPath =
+		let
+		    Source = "C:\Users\lordd\Documents\Universidad\Database_Knowledge_Extraction_Final_Project\data\processed\" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text]
+		in
+		    Source
+	lineageTag: a7f8a1e9-dac0-4e79-b6f4-d93ca7247157
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="675.465234pt" height="531.408789pt" viewBox="0 0 675.465234 531.408789" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 531.408789 
+L 675.465234 531.408789 
+L 675.465234 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 110.265234 494.953125 
+L 668.265234 494.953125 
+L 668.265234 23.713125 
+L 110.265234 23.713125 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 110.265234 45.133125 
+L 641.693806 45.133125 
+L 641.693806 57.921185 
+L 110.265234 57.921185 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 110.265234 61.1182 
+L 544.317116 61.1182 
+L 544.317116 73.906259 
+L 110.265234 73.906259 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 110.265234 77.103274 
+L 490.588814 77.103274 
+L 490.588814 89.891334 
+L 110.265234 89.891334 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 110.265234 93.088349 
+L 454.275566 93.088349 
+L 454.275566 105.876409 
+L 110.265234 105.876409 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 110.265234 109.073424 
+L 452.564072 109.073424 
+L 452.564072 121.861483 
+L 110.265234 121.861483 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 110.265234 125.058498 
+L 419.744226 125.058498 
+L 419.744226 137.846558 
+L 110.265234 137.846558 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 110.265234 141.043573 
+L 411.657625 141.043573 
+L 411.657625 153.831632 
+L 110.265234 153.831632 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 110.265234 157.028647 
+L 410.945067 157.028647 
+L 410.945067 169.816707 
+L 110.265234 169.816707 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 110.265234 173.013722 
+L 388.862034 173.013722 
+L 388.862034 185.801782 
+L 110.265234 185.801782 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 110.265234 188.998797 
+L 376.243163 188.998797 
+L 376.243163 201.786856 
+L 110.265234 201.786856 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 110.265234 204.983871 
+L 369.363925 204.983871 
+L 369.363925 217.771931 
+L 110.265234 217.771931 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 110.265234 220.968946 
+L 354.234074 220.968946 
+L 354.234074 233.757006 
+L 110.265234 233.757006 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 110.265234 236.954021 
+L 350.431527 236.954021 
+L 350.431527 249.74208 
+L 110.265234 249.74208 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 110.265234 252.939095 
+L 348.956026 252.939095 
+L 348.956026 265.727155 
+L 110.265234 265.727155 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 110.265234 268.92417 
+L 342.045245 268.92417 
+L 342.045245 281.712229 
+L 110.265234 281.712229 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 110.265234 284.909244 
+L 313.959634 284.909244 
+L 313.959634 297.697304 
+L 110.265234 297.697304 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 110.265234 300.894319 
+L 272.781382 300.894319 
+L 272.781382 313.682379 
+L 110.265234 313.682379 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 110.265234 316.879394 
+L 261.315615 316.879394 
+L 261.315615 329.667453 
+L 110.265234 329.667453 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 110.265234 332.864468 
+L 258.535395 332.864468 
+L 258.535395 345.652528 
+L 110.265234 345.652528 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 110.265234 348.849543 
+L 251.127418 348.849543 
+L 251.127418 361.637603 
+L 110.265234 361.637603 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 110.265234 364.834618 
+L 223.787345 364.834618 
+L 223.787345 377.622677 
+L 110.265234 377.622677 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 110.265234 380.819692 
+L 221.619145 380.819692 
+L 221.619145 393.607752 
+L 110.265234 393.607752 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 110.265234 396.804767 
+L 210.752804 396.804767 
+L 210.752804 409.592826 
+L 110.265234 409.592826 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 110.265234 412.789841 
+L 203.108932 412.789841 
+L 203.108932 425.577901 
+L 110.265234 425.577901 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 110.265234 428.774916 
+L 184.170665 428.774916 
+L 184.170665 441.562976 
+L 110.265234 441.562976 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 110.265234 444.759991 
+L 181.585496 444.759991 
+L 181.585496 457.54805 
+L 110.265234 457.54805 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 110.265234 460.745065 
+L 178.564046 460.745065 
+L 178.564046 473.533125 
+L 110.265234 473.533125 
+z
+" clip-path="url(#p1984dc1145)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="md243800572" d="M 0 0 
+L 0 3.5 
+" style="stroke: #1a1a1a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#md243800572" x="110.265234" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="110.265234" y="508.505371" transform="rotate(-0 110.265234 508.505371)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#md243800572" x="234.056831" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="234.056831" y="508.505371" transform="rotate(-0 234.056831 508.505371)">5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#md243800572" x="357.848428" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="357.848428" y="508.505371" transform="rotate(-0 357.848428 508.505371)">10</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#md243800572" x="481.640024" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="481.640024" y="508.505371" transform="rotate(-0 481.640024 508.505371)">15</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#md243800572" x="605.431621" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="605.431621" y="508.505371" transform="rotate(-0 605.431621 508.505371)">20</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="389.265234" y="521.908789" transform="rotate(-0 389.265234 521.908789)">Late Rate (% of evaluated orders delivered after the promised date)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <defs>
+       <path id="m461b6e0d71" d="M 0 0 
+L -3.5 0 
+" style="stroke: #1a1a1a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="51.527155" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="54.858561" transform="rotate(-0 103.265234 54.858561)">Alagoas</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="67.512229" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="70.843636" transform="rotate(-0 103.265234 70.843636)">Maranhão</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="83.497304" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="86.786523" transform="rotate(-0 103.265234 86.786523)">Sergipe</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="99.482379" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="102.879176" transform="rotate(-0 103.265234 102.879176)">Piauí</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="115.467453" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="118.86425" transform="rotate(-0 103.265234 118.86425)">Ceará</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="131.452528" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="134.741747" transform="rotate(-0 103.265234 134.741747)">Roraima</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="147.437603" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="150.769009" transform="rotate(-0 103.265234 150.769009)">Bahia</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="163.422677" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="166.754083" transform="rotate(-0 103.265234 166.754083)">Rio de Janeiro</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="179.407752" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="182.804549" transform="rotate(-0 103.265234 182.804549)">Pará</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="195.392826" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="198.789623" transform="rotate(-0 103.265234 198.789623)">Espírito Santo</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="211.377901" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="214.774698" transform="rotate(-0 103.265234 214.774698)">Paraíba</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="227.362976" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="230.652194" transform="rotate(-0 103.265234 230.652194)">Tocantins</text>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="243.34805" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="246.679457" transform="rotate(-0 103.265234 246.679457)">Mato Grosso do Sul</text>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="259.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="262.664531" transform="rotate(-0 103.265234 262.664531)">Pernambuco</text>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="275.3182" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="278.649606" transform="rotate(-0 103.265234 278.649606)">Rio Grande do Norte</text>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="291.303274" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="294.592493" transform="rotate(-0 103.265234 294.592493)">Santa Catarina</text>
+     </g>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="307.288349" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="310.685146" transform="rotate(-0 103.265234 310.685146)">Goiás</text>
+     </g>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="323.273424" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="326.60483" transform="rotate(-0 103.265234 326.60483)">Rio Grande do Sul</text>
+     </g>
+    </g>
+    <g id="ytick_19">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="339.258498" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="342.534621" transform="rotate(-0 103.265234 342.534621)">Mato Grosso</text>
+     </g>
+    </g>
+    <g id="ytick_20">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="355.243573" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_26">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="358.574979" transform="rotate(-0 103.265234 358.574979)">Distrito Federal</text>
+     </g>
+    </g>
+    <g id="ytick_21">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="371.228647" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="374.517866" transform="rotate(-0 103.265234 374.517866)">Minas Gerais</text>
+     </g>
+    </g>
+    <g id="ytick_22">
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="387.213722" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="390.545128" transform="rotate(-0 103.265234 390.545128)">São Paulo</text>
+     </g>
+    </g>
+    <g id="ytick_23">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="403.198797" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="406.595594" transform="rotate(-0 103.265234 406.595594)">Paraná</text>
+     </g>
+    </g>
+    <g id="ytick_24">
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="419.183871" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_30">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="422.459994" transform="rotate(-0 103.265234 422.459994)">Acre</text>
+     </g>
+    </g>
+    <g id="ytick_25">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="435.168946" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_31">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="438.565743" transform="rotate(-0 103.265234 438.565743)">Amapá</text>
+     </g>
+    </g>
+    <g id="ytick_26">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="451.154021" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_32">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="454.559958" transform="rotate(-0 103.265234 454.559958)">Rondônia</text>
+     </g>
+    </g>
+    <g id="ytick_27">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="110.265234" y="467.139095" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_33">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="103.265234" y="470.415218" transform="rotate(-0 103.265234 470.415218)">Amazonas</text>
+     </g>
+    </g>
+    <g id="text_34">
+     <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="14.480273" y="259.333125" transform="rotate(-90 14.480273 259.333125)">Customer state</text>
+    </g>
+   </g>
+   <g id="line2d_33">
+    <path d="M 278.34376 494.953125 
+L 278.34376 23.713125 
+" clip-path="url(#p1984dc1145)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #37352f; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 110.265234 494.953125 
+L 110.265234 23.713125 
+" style="fill: none; stroke: #e5e3df; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 110.265234 494.953125 
+L 668.265234 494.953125 
+" style="fill: none; stroke: #e5e3df; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #37352f" x="278.34376" y="31.11625" transform="rotate(-0 278.34376 31.11625)"> National: 6.8%</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 14px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="110.265234" y="17.713125" transform="rotate(-0 110.265234 17.713125)">Alagoas breaks the delivery promise most often: 21.5% late</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1984dc1145">
+   <rect x="110.265234" y="23.713125" width="558" height="471.24"/>
+  </clipPath>
+ </defs>
+</svg>

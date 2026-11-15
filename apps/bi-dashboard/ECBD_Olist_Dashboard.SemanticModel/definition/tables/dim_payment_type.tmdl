@@ -1,0 +1,52 @@
+table dim_payment_type
+	lineageTag: cb5b748e-b807-4359-a11e-fc8d50211764
+
+	column payment_type_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6a021422-3f55-491f-8571-9ff40cb9caf2
+		summarizeBy: none
+		sourceColumn: payment_type_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_type
+		dataType: string
+		lineageTag: d7f1636e-8470-4fe9-86a8-4a4d89c0b53d
+		summarizeBy: none
+		sourceColumn: payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_label
+		dataType: string
+		lineageTag: 31d53fb0-d083-4349-90cb-62036e8e80d7
+		summarizeBy: none
+		sourceColumn: payment_label
+
+		annotation SummarizationSetBy = Automatic
+
+	/// English display name of the payment type (Boleto, the Brazilian bank payment slip, shown as Bank slip (boleto)).
+	column payment_name = IF ( dim_payment_type[payment_label] = "Boleto", "Bank slip (boleto)", dim_payment_type[payment_label] )
+		dataType: string
+		lineageTag: 9d3dd718-c5ee-427e-a3d6-4d13b54b721c
+		summarizeBy: none
+
+	partition dim_payment_type = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataPath & "dim_payment_type.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {
+				        {"payment_type_key", Int64.Type}, {"payment_type", type text}, {"payment_label", type text}
+				    }, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

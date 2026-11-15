@@ -1,0 +1,10 @@
+target-version = "py310"
+line-length = 100
+exclude = [".venv", "data"]
+
+[lint]
+# E/F: pycodestyle and pyflakes; I: import sorting; PTH: forbid os.path (use pathlib).
+select = ["E", "F", "I", "PTH"]
+
+[lint.per-file-ignores]
+"apps/notebooks/final_visualizations.py" = ["E501"]

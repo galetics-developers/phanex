@@ -1,0 +1,142 @@
+table dim_customer
+	lineageTag: bfd5840b-881f-4528-9d3c-39e1569b2065
+
+	column customer_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: be80b281-4292-4c49-8919-6c34faede0a5
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 688066fd-72c1-4617-84b0-31ce8bb1c886
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 0632d76b-9b16-4fdc-a3a2-da718d5301d8
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 932a3dd1-cd9f-449a-a9e9-438460504e0b
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: e5b3be71-901c-4a6a-83c7-2d95329f1a90
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		isHidden
+		lineageTag: 2bb6e1fc-1d73-452e-adea-556078e44d27
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column zip_prefix
+		dataType: string
+		lineageTag: 87b178d9-89fd-475d-8080-09ef76f2ac0c
+		summarizeBy: none
+		sourceColumn: zip_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		lineageTag: 8046b555-c094-4fd7-8030-560828c02337
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lng
+		dataType: double
+		lineageTag: 352dae52-3361-43f6-9a69-db0d5bccd48b
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column state_name = LOOKUPVALUE(dim_state[state_name], dim_state[uf], dim_customer[state])
+		dataType: string
+		lineageTag: 2ba27907-3598-4b80-936a-3035a63bee3c
+		dataCategory: StateOrProvince
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_full = dim_customer[state_name] & ", Brazil"
+		dataType: string
+		lineageTag: 9be6845c-a4a0-477e-8cb7-49032d3ae108
+		dataCategory: StateOrProvince
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	/// English display name of the customer region (Norte = North, Nordeste = Northeast, Centro-Oeste = Central-West, Sudeste = Southeast, Sul = South). Used in slicers, axes and the Customer geography hierarchy.
+	column region_name = SWITCH ( dim_customer[region], "Norte", "North", "Nordeste", "Northeast", "Centro-Oeste", "Central-West", "Sudeste", "Southeast", "Sul", "South", dim_customer[region] )
+		dataType: string
+		lineageTag: c727020f-9eec-4b70-898d-d3e3ae87dc35
+		summarizeBy: none
+
+	hierarchy 'Customer geography'
+		lineageTag: 4cb2b16b-38bd-4b2e-9bb9-5e26b96fe534
+
+		level Region
+			lineageTag: ce593d49-f431-4aad-819b-fb947372e85e
+			column: region_name
+
+		level State
+			lineageTag: 4e694ceb-dc82-4487-af0a-b481719a9382
+			column: state_full
+
+		level City
+			lineageTag: 2f628b4b-515e-4a1f-b57d-af48f842c8df
+			column: city
+
+	partition dim_customer = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataPath & "dim_customer.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {
+				        {"customer_key", Int64.Type}, {"customer_id", type text}, {"customer_unique_id", type text},
+				        {"city", type text}, {"state", type text}, {"region", type text}, {"zip_prefix", type text},
+				        {"lat", type number}, {"lng", type number}
+				    }, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

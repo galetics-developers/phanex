@@ -1,0 +1,28 @@
+model Model
+	culture: es-MX
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DataPath","fact_order_items","dim_date","dim_customer","dim_seller","dim_product","dim_state","dim_payment_type","dim_order_status"]
+
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
+
+ref table fact_order_items
+ref table dim_date
+ref table dim_customer
+ref table dim_seller
+ref table dim_product
+ref table dim_state
+ref table dim_payment_type
+ref table dim_order_status
+ref table _Measures
+ref table 'Late Rate Target'
+
+ref cultureInfo es-MX
+

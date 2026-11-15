@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="693.538086pt" height="366.019355pt" viewBox="0 0 693.538086 366.019355" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 366.019355 
+L 693.538086 366.019355 
+L 693.538086 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 128.338086 328.633125 
+L 686.338086 328.633125 
+L 686.338086 23.713125 
+L 128.338086 23.713125 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 128.338086 37.573125 
+L 601.219442 37.573125 
+L 601.219442 66.003894 
+L 128.338086 66.003894 
+z
+" clip-path="url(#p8e2e58132b)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 128.338086 73.111587 
+L 554.649746 73.111587 
+L 554.649746 101.542356 
+L 128.338086 101.542356 
+z
+" clip-path="url(#p8e2e58132b)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 128.338086 108.650048 
+L 515.393112 108.650048 
+L 515.393112 137.080817 
+L 128.338086 137.080817 
+z
+" clip-path="url(#p8e2e58132b)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 128.338086 144.18851 
+L 479.837317 144.18851 
+L 479.837317 172.619279 
+L 128.338086 172.619279 
+z
+" clip-path="url(#p8e2e58132b)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 128.338086 179.726971 
+L 254.77737 179.726971 
+L 254.77737 208.15774 
+L 128.338086 208.15774 
+z
+" clip-path="url(#p8e2e58132b)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 128.338086 215.265433 
+L 236.106354 215.265433 
+L 236.106354 243.696202 
+L 128.338086 243.696202 
+z
+" clip-path="url(#p8e2e58132b)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 128.338086 250.803894 
+L 231.017657 250.803894 
+L 231.017657 279.234663 
+L 128.338086 279.234663 
+z
+" clip-path="url(#p8e2e58132b)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 128.338086 286.342356 
+L 154.898615 286.342356 
+L 154.898615 314.773125 
+L 128.338086 314.773125 
+z
+" clip-path="url(#p8e2e58132b)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="md243800572" d="M 0 0 
+L 0 3.5 
+" style="stroke: #1a1a1a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#md243800572" x="128.338086" y="328.633125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="128.338086" y="342.734687" transform="rotate(-0 128.338086 342.734687)">R$ 0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#md243800572" x="202.734551" y="328.633125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="202.734551" y="342.734687" transform="rotate(-0 202.734551 342.734687)">R$ 500,000</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#md243800572" x="277.131016" y="328.633125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="277.131016" y="342.734687" transform="rotate(-0 277.131016 342.734687)">R$ 1,000,000</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#md243800572" x="351.527481" y="328.633125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="351.527481" y="342.734687" transform="rotate(-0 351.527481 342.734687)">R$ 1,500,000</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#md243800572" x="425.923945" y="328.633125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="425.923945" y="342.734687" transform="rotate(-0 425.923945 342.734687)">R$ 2,000,000</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#md243800572" x="500.32041" y="328.633125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="500.32041" y="342.734687" transform="rotate(-0 500.32041 342.734687)">R$ 2,500,000</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#md243800572" x="574.716875" y="328.633125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="574.716875" y="342.734687" transform="rotate(-0 574.716875 342.734687)">R$ 3,000,000</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#md243800572" x="649.11334" y="328.633125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="649.11334" y="342.734687" transform="rotate(-0 649.11334 342.734687)">R$ 3,500,000</text>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="407.338086" y="356.519355" transform="rotate(-0 407.338086 356.519355)">GMV (R$, sum of item price, canceled orders excluded)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_9">
+      <defs>
+       <path id="m461b6e0d71" d="M 0 0 
+L -3.5 0 
+" style="stroke: #1a1a1a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m461b6e0d71" x="128.338086" y="51.78851" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="121.338086" y="55.119916" transform="rotate(-0 121.338086 55.119916)">Fashion &amp; Beauty</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="128.338086" y="87.326971" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="121.338086" y="90.61619" transform="rotate(-0 121.338086 90.61619)">Home &amp; Furniture</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="128.338086" y="122.865433" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="121.338086" y="126.196839" transform="rotate(-0 121.338086 126.196839)">Leisure &amp; Culture</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="128.338086" y="158.403894" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="121.338086" y="161.7353" transform="rotate(-0 121.338086 161.7353)">Technology &amp; Appliances</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="128.338086" y="193.942356" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="121.338086" y="197.273762" transform="rotate(-0 121.338086 197.273762)">Construction &amp; Garden</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="128.338086" y="229.480817" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="121.338086" y="232.812224" transform="rotate(-0 121.338086 232.812224)">Automotive &amp; Industry</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="128.338086" y="265.019279" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="121.338086" y="268.350685" transform="rotate(-0 121.338086 268.350685)">Basic Consumer Goods</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="128.338086" y="300.55774" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="121.338086" y="303.889147" transform="rotate(-0 121.338086 303.889147)">uncategorized</text>
+     </g>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="14.480273" y="176.173125" transform="rotate(-90 14.480273 176.173125)">Macro category</text>
+    </g>
+   </g>
+   <g id="patch_11">
+    <path d="M 128.338086 328.633125 
+L 128.338086 23.713125 
+" style="fill: none; stroke: #e5e3df; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 128.338086 328.633125 
+L 686.338086 328.633125 
+" style="fill: none; stroke: #e5e3df; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="605.219442" y="54.681576" transform="rotate(-0 605.219442 54.681576)">R$ 3.18 M</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="558.649746" y="90.220038" transform="rotate(-0 558.649746 90.220038)">R$ 2.87 M</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="519.393112" y="125.758499" transform="rotate(-0 519.393112 125.758499)">R$ 2.60 M</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="483.837317" y="161.296961" transform="rotate(-0 483.837317 161.296961)">R$ 2.36 M</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="258.77737" y="196.835422" transform="rotate(-0 258.77737 196.835422)">R$ 0.85 M</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="240.106354" y="232.373884" transform="rotate(-0 240.106354 232.373884)">R$ 0.72 M</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="235.017657" y="267.912345" transform="rotate(-0 235.017657 267.912345)">R$ 0.69 M</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="158.898615" y="303.450807" transform="rotate(-0 158.898615 303.450807)">R$ 0.18 M</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 14px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="128.338086" y="17.713125" transform="rotate(-0 128.338086 17.713125)">The top 3 macro categories make 64.3% of GMV</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8e2e58132b">
+   <rect x="128.338086" y="23.713125" width="558" height="304.92"/>
+  </clipPath>
+ </defs>
+</svg>

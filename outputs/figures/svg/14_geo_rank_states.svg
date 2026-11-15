@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="653.238047pt" height="531.408789pt" viewBox="0 0 653.238047 531.408789" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 531.408789 
+L 653.238047 531.408789 
+L 653.238047 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 88.038047 494.953125 
+L 646.038047 494.953125 
+L 646.038047 23.713125 
+L 88.038047 23.713125 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 88.038047 45.133125 
+L 573.255438 45.133125 
+L 573.255438 65.533125 
+L 88.038047 65.533125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 88.038047 70.633125 
+L 484.346287 70.633125 
+L 484.346287 91.033125 
+L 88.038047 91.033125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 88.038047 96.133125 
+L 435.290011 96.133125 
+L 435.290011 116.533125 
+L 88.038047 116.533125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 88.038047 121.633125 
+L 402.134437 121.633125 
+L 402.134437 142.033125 
+L 88.038047 142.033125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 88.038047 147.133125 
+L 400.571768 147.133125 
+L 400.571768 167.533125 
+L 88.038047 167.533125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 88.038047 172.633125 
+L 370.605822 172.633125 
+L 370.605822 193.033125 
+L 88.038047 193.033125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 88.038047 198.133125 
+L 363.222403 198.133125 
+L 363.222403 218.533125 
+L 88.038047 218.533125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 88.038047 223.633125 
+L 362.571807 223.633125 
+L 362.571807 244.033125 
+L 88.038047 244.033125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 88.038047 274.633125 
+L 216.651345 274.633125 
+L 216.651345 295.033125 
+L 88.038047 295.033125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 88.038047 300.133125 
+L 191.68867 300.133125 
+L 191.68867 320.533125 
+L 88.038047 320.533125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 88.038047 325.633125 
+L 189.709008 325.633125 
+L 189.709008 346.033125 
+L 88.038047 346.033125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 88.038047 351.133125 
+L 179.787567 351.133125 
+L 179.787567 371.533125 
+L 88.038047 371.533125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 88.038047 376.633125 
+L 172.808379 376.633125 
+L 172.808379 397.033125 
+L 88.038047 397.033125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 88.038047 402.133125 
+L 155.516919 402.133125 
+L 155.516919 422.533125 
+L 88.038047 422.533125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 88.038047 427.633125 
+L 153.156546 427.633125 
+L 153.156546 448.033125 
+L 88.038047 448.033125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 88.038047 453.133125 
+L 150.397832 453.133125 
+L 150.397832 473.533125 
+L 88.038047 473.533125 
+z
+" clip-path="url(#pa1b4eeb248)" style="fill: #bfbfbf"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="md243800572" d="M 0 0 
+L 0 3.5 
+" style="stroke: #1a1a1a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#md243800572" x="88.038047" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="88.038047" y="508.505371" transform="rotate(-0 88.038047 508.505371)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#md243800572" x="201.065157" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="201.065157" y="508.505371" transform="rotate(-0 201.065157 508.505371)">5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#md243800572" x="314.092267" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="314.092267" y="508.505371" transform="rotate(-0 314.092267 508.505371)">10</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#md243800572" x="427.119377" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="427.119377" y="508.505371" transform="rotate(-0 427.119377 508.505371)">15</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#md243800572" x="540.146487" y="494.953125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="540.146487" y="508.505371" transform="rotate(-0 540.146487 508.505371)">20</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="367.038047" y="521.908789" transform="rotate(-0 367.038047 521.908789)">Late Rate (% of evaluated orders delivered after the promised date)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <defs>
+       <path id="m461b6e0d71" d="M 0 0 
+L -3.5 0 
+" style="stroke: #1a1a1a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="55.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="58.664531" transform="rotate(-0 81.038047 58.664531)">Alagoas</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="80.833125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="84.164531" transform="rotate(-0 81.038047 84.164531)">Maranhão</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="106.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="109.622344" transform="rotate(-0 81.038047 109.622344)">Sergipe</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="131.833125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="135.229922" transform="rotate(-0 81.038047 135.229922)">Piauí</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="157.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="160.729922" transform="rotate(-0 81.038047 160.729922)">Ceará</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="182.833125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="186.122344" transform="rotate(-0 81.038047 186.122344)">Roraima</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="208.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="211.664531" transform="rotate(-0 81.038047 211.664531)">Bahia</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="233.833125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="237.164531" transform="rotate(-0 81.038047 237.164531)">Rio de Janeiro</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="284.833125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="288.164531" transform="rotate(-0 81.038047 288.164531)">Distrito Federal</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="310.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="313.622344" transform="rotate(-0 81.038047 313.622344)">Minas Gerais</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="335.833125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="339.164531" transform="rotate(-0 81.038047 339.164531)">São Paulo</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="361.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="364.729922" transform="rotate(-0 81.038047 364.729922)">Paraná</text>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="386.833125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="390.109248" transform="rotate(-0 81.038047 390.109248)">Acre</text>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="412.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="415.729922" transform="rotate(-0 81.038047 415.729922)">Amapá</text>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="437.833125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="441.239063" transform="rotate(-0 81.038047 441.239063)">Rondônia</text>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m461b6e0d71" x="88.038047" y="463.333125" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="81.038047" y="466.609248" transform="rotate(-0 81.038047 466.609248)">Amazonas</text>
+     </g>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1a1a1a" x="14.480273" y="259.333125" transform="rotate(-90 14.480273 259.333125)">Customer state</text>
+    </g>
+   </g>
+   <g id="line2d_22">
+    <path d="M 241.501048 494.953125 
+L 241.501048 23.713125 
+" clip-path="url(#pa1b4eeb248)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #37352f; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 88.038047 494.953125 
+L 88.038047 23.713125 
+" style="fill: none; stroke: #e5e3df; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 88.038047 494.953125 
+L 646.038047 494.953125 
+" style="fill: none; stroke: #e5e3df; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="577.255438" y="57.921016" transform="rotate(-0 577.255438 57.921016)">21.5%</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="488.346287" y="83.421016" transform="rotate(-0 488.346287 83.421016)">17.5%</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="439.290011" y="108.921016" transform="rotate(-0 439.290011 108.921016)">15.4%</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="406.134437" y="134.421016" transform="rotate(-0 406.134437 134.421016)">13.9%</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="404.571768" y="159.921016" transform="rotate(-0 404.571768 159.921016)">13.8%</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="374.605822" y="185.421016" transform="rotate(-0 374.605822 185.421016)">12.5%</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="367.222403" y="210.921016" transform="rotate(-0 367.222403 210.921016)">12.2%</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="366.571807" y="236.421016" transform="rotate(-0 366.571807 236.421016)">12.1%</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="195.68867" y="312.921016" transform="rotate(-0 195.68867 312.921016)">4.6%</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="193.709008" y="338.421016" transform="rotate(-0 193.709008 338.421016)">4.5%</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="183.787567" y="363.921016" transform="rotate(-0 183.787567 363.921016)">4.1%</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="176.808379" y="389.421016" transform="rotate(-0 176.808379 389.421016)">3.8%</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="159.516919" y="414.921016" transform="rotate(-0 159.516919 414.921016)">3.0%</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="157.156546" y="440.421016" transform="rotate(-0 157.156546 440.421016)">2.9%</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="154.397832" y="465.921016" transform="rotate(-0 154.397832 465.921016)">2.8%</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: end; fill: #1a1a1a" x="213.260531" y="287.421016" transform="rotate(-0 213.260531 287.421016)">5.7%</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: start; fill: #37352f" x="241.501048" y="31.11625" transform="rotate(-0 241.501048 31.11625)"> National: 6.8%</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 14px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="88.038047" y="17.713125" transform="rotate(-0 88.038047 17.713125)">Late Rate % goes from 2.8% (Amazonas) to 21.5% (Alagoas)</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_21">
+     <path d="M 524.028984 490.453125 
+L 639.738047 490.453125 
+Q 641.538047 490.453125 641.538047 488.653125 
+L 641.538047 463.215645 
+Q 641.538047 461.415645 639.738047 461.415645 
+L 524.028984 461.415645 
+Q 522.228984 461.415645 522.228984 463.215645 
+L 522.228984 488.653125 
+Q 522.228984 490.453125 524.028984 490.453125 
+z
+" style="fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="patch_22">
+     <path d="M 525.828984 471.678457 
+L 543.828984 471.678457 
+L 543.828984 465.378457 
+L 525.828984 465.378457 
+z
+" style="fill: #d55e00; stroke: #d55e00; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_42">
+     <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="551.028984" y="471.678457" transform="rotate(-0 551.028984 471.678457)">Highest 8 Late Rate %</text>
+    </g>
+    <g id="patch_23">
+     <path d="M 525.828984 484.959082 
+L 543.828984 484.959082 
+L 543.828984 478.659082 
+L 525.828984 478.659082 
+z
+" style="fill: #bfbfbf; stroke: #bfbfbf; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_43">
+     <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: start; fill: #1a1a1a" x="551.028984" y="484.959082" transform="rotate(-0 551.028984 484.959082)">Lowest 8 Late Rate %</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa1b4eeb248">
+   <rect x="88.038047" y="23.713125" width="558" height="471.24"/>
+  </clipPath>
+ </defs>
+</svg>

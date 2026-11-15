@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecbd-etl"
+version = "0.1.0"
+description = "ETL pipeline that builds the Olist star schema (ECBD Olist Insights)"
+requires-python = ">=3.10"
+dependencies = ["pandas>=2.2", "numpy>=1.26"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,9 @@
+order_status_key,order_status,status_label,is_completed
+1,created,Created,0
+2,approved,Approved,0
+3,invoiced,Invoiced,0
+4,processing,Processing,0
+5,shipped,Shipped,0
+6,delivered,Delivered,1
+7,unavailable,Unavailable,0
+8,canceled,Canceled,0

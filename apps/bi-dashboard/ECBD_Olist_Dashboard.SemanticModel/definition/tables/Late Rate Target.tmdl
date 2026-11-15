@@ -1,0 +1,21 @@
+table 'Late Rate Target'
+	lineageTag: 8f95e5a4-913f-468f-b6f8-63edabac03ec
+
+	column Target
+		dataType: double
+		formatString: 0%
+		lineageTag: b68f2e2a-c0ea-4c10-907c-ffdf6865e6d1
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Late Rate Target' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 0, 20, 1 ), "Value", [Value] / 100 )
+

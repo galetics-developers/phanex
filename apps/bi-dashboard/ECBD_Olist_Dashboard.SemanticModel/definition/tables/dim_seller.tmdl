@@ -1,0 +1,85 @@
+table dim_seller
+	lineageTag: d0a51fc1-4e00-466a-be3b-7a0f4e286d67
+
+	column seller_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7a22f32b-e785-47c3-9ddd-14616a1cc70f
+		summarizeBy: none
+		sourceColumn: seller_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		lineageTag: 5ab79288-69fc-4cf1-8eed-a6f57666e3cc
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_city
+		dataType: string
+		lineageTag: 2b4ebf62-229a-44d0-a19b-d7ea2cb36c42
+		summarizeBy: none
+		sourceColumn: seller_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_state
+		dataType: string
+		lineageTag: 6c28f289-f6fd-41ce-89c1-7ec41724bc00
+		summarizeBy: none
+		sourceColumn: seller_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_region
+		dataType: string
+		lineageTag: 28064c3d-f526-4936-8973-2ea24de130b7
+		summarizeBy: none
+		sourceColumn: seller_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		lineageTag: 3b952d4f-af22-42d0-b443-7675442a0aa2
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lng
+		dataType: double
+		lineageTag: 8b4b9586-df94-4cd6-be33-6b98acf445c5
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_seller = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataPath & "dim_seller.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {
+				        {"seller_key", Int64.Type}, {"seller_id", type text}, {"seller_city", type text},
+				        {"seller_state", type text}, {"seller_region", type text}, {"lat", type number}, {"lng", type number}
+				    }, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

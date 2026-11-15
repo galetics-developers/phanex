@@ -1,0 +1,169 @@
+table dim_date
+	lineageTag: b3fe8afb-c541-496d-a491-2e0e294b0e4f
+	dataCategory: Time
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 364686f5-8837-41ed-96b5-aae9fb60dad9
+		summarizeBy: sum
+		sourceColumn: date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: fc3ef9ec-b38a-42c1-b145-a52ab952327a
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b136b23-6481-42bf-ad63-4c96fb0c8b17
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 89cde98e-e181-47d2-88e3-b64d69c68b87
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 780f863b-3e0c-4ff5-b411-376c063993a8
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 8a3a323f-0420-432f-a071-d35a2c28908c
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: a68c7978-7436-4795-b1c7-0a273ed88c8f
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 6019dd26-b0d6-460e-8904-06e3f6e0b340
+		summarizeBy: sum
+		sourceColumn: weekday_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_name
+		dataType: string
+		lineageTag: bae49a14-d068-4649-8a2e-1c96ad6b4e75
+		summarizeBy: none
+		sourceColumn: weekday_name
+		sortByColumn: weekday_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: int64
+		formatString: 0
+		lineageTag: 946f2f19-5ae0-4961-bd14-a062a76f6ceb
+		summarizeBy: sum
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column commercial_event
+		dataType: string
+		lineageTag: f5c4439f-4157-4913-8e1a-be70dd4b9de9
+		summarizeBy: none
+		sourceColumn: commercial_event
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Month label for monthly axes, e.g. Nov 2017 (sorted by year_month).
+	column month_label = FORMAT ( dim_date[date], "MMM yyyy", "en-US" )
+		dataType: string
+		lineageTag: 172e2b2b-3689-4b51-9c43-0fad5fe68256
+		summarizeBy: none
+		sortByColumn: year_month
+
+	/// Quarter label Q1 to Q4 for the quarter slicer (sorted by quarter).
+	column quarter_label = "Q" & dim_date[quarter]
+		dataType: string
+		lineageTag: a8dfe9b0-d3d6-431f-9466-81179b9db9da
+		summarizeBy: none
+		sortByColumn: quarter
+
+	/// Three-letter weekday label (Mon to Sun) for the compact heatmap columns, sorted by weekday_number.
+	column weekday_short = LEFT ( dim_date[weekday_name], 3 )
+		dataType: string
+		lineageTag: e3b74cbd-7a8b-4c9e-b0d0-755cf6cffe9f
+		summarizeBy: none
+		sortByColumn: weekday_number
+
+	hierarchy 'Date hierarchy'
+		lineageTag: d3ea864b-f9e3-4dce-810c-b65c9353315f
+
+		level Year
+			lineageTag: 98c72269-b17b-4b04-bad3-c8dcf64d3f07
+			column: year
+
+		level Quarter
+			lineageTag: 96bc31cb-44de-40d9-9985-23b110f4c3cb
+			column: quarter
+
+		level Month
+			lineageTag: f61daba6-9440-48bf-8162-dc904f39b349
+			column: month_name
+
+		level Date
+			lineageTag: 1283acf4-6967-4cc5-8643-19c7be9652d1
+			column: date
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataPath & "dim_date.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {
+				        {"date_key", Int64.Type}, {"date", type date}, {"year", Int64.Type}, {"quarter", Int64.Type},
+				        {"month_number", Int64.Type}, {"month_name", type text}, {"year_month", type text},
+				        {"weekday_number", Int64.Type}, {"weekday_name", type text}, {"is_weekend", Int64.Type},
+				        {"commercial_event", type text}
+				    }, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

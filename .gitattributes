@@ -1,0 +1,4 @@
+*.csv text eol=lf
+*.pbix binary
+*.gz binary
+*.zip binary

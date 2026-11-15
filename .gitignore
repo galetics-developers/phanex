@@ -1,0 +1,69 @@
+# ECBD Olist Insights
+
+# --- AI tools / SDD workflow (local only) ---
+.claude/
+.agents/
+.codex/
+.cursor/
+.gemini/
+.vscode/
+.antigravity/
+.opencode/
+.codegraph/
+codegraph.json
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+MEMORY.md
+opencode.jsonc
+.mcp.json
+skills-lock.json
+skill.lock
+skills.lock
+docs/constitution.md
+docs/specs
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+kaggle.json
+secrets/
+credentials/
+*.pem
+*.key
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.ruff_cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Regenerable or heavy data ---
+data/raw/olist/*
+!data/raw/olist/IT91_CSV_Olist_Data_Original_ECBD.zip
+data/interim/
+
+# --- Power BI ---
+*.pbix.bak
+.pbi/
+
+# --- Logs and temporary files ---
+logs/
+*.log
+tmp/
+temp/
+
+# --- Editors and operating system ---
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+Desktop.ini

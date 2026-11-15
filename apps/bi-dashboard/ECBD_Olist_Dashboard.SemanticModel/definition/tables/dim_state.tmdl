@@ -1,0 +1,106 @@
+table dim_state
+	isHidden
+	lineageTag: 2cfb63e1-64da-4488-8879-7fd84d6b6e8d
+
+	column customer_state_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 051c7c5f-9207-487b-ab78-77b451266545
+		summarizeBy: none
+		sourceColumn: customer_state_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf
+		dataType: string
+		isHidden
+		lineageTag: 24fc2373-6aac-4b29-b105-efd5e0ca9f6d
+		summarizeBy: none
+		sourceColumn: uf
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_name
+		dataType: string
+		isHidden
+		lineageTag: 479a0cfb-98c5-4894-8d74-739ab95ba33f
+		summarizeBy: none
+		sourceColumn: state_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		isHidden
+		lineageTag: 7aea4fae-c9d6-4e0e-9ac9-0c7a8df722b4
+		summarizeBy: none
+		sourceColumn: region
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_2018
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a0a43c91-5e38-45b1-ba12-eab6106bba23
+		summarizeBy: none
+		sourceColumn: population_2018
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column centroid_lat
+		dataType: double
+		isHidden
+		lineageTag: 9dfa209f-890f-484a-a659-b196634bc3b2
+		summarizeBy: none
+		sourceColumn: centroid_lat
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column centroid_lng
+		dataType: double
+		isHidden
+		lineageTag: 3ee7cd09-8ef4-4864-a25c-c318013135a2
+		summarizeBy: none
+		sourceColumn: centroid_lng
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_state = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataPath & "dim_state.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {
+				        {"customer_state_key", Int64.Type}, {"uf", type text}, {"state_name", type text},
+				        {"region", type text}, {"population_2018", Int64.Type},
+				        {"centroid_lat", type number}, {"centroid_lng", type number}
+				    }, "en-US")
+				in
+				    Typed
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

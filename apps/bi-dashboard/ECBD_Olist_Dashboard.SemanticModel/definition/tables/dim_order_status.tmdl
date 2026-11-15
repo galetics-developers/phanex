@@ -1,0 +1,56 @@
+table dim_order_status
+	lineageTag: 5d92f8c8-7942-45fe-b471-4462d0d65cb3
+
+	column order_status_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0848452c-7ed7-44bd-944c-3a901f228200
+		summarizeBy: none
+		sourceColumn: order_status_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_status
+		dataType: string
+		lineageTag: 76bf1580-ddc5-4ba3-a3fe-752abdc81f6f
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_label
+		dataType: string
+		lineageTag: 368034a4-ef99-44e4-b7d2-7bab0e899572
+		summarizeBy: none
+		sourceColumn: status_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_completed
+		dataType: int64
+		formatString: 0
+		lineageTag: 18393d48-aef4-439c-99fb-462043a1bb59
+		summarizeBy: none
+		sourceColumn: is_completed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_order_status = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataPath & "dim_order_status.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {
+				        {"order_status_key", Int64.Type}, {"order_status", type text}, {"status_label", type text},
+				        {"is_completed", Int64.Type}
+				    }, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

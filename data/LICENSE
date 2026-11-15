@@ -1,0 +1,16 @@
+Data license
+
+The files in data/processed/ are derived from the "Brazilian E-Commerce
+Public Dataset by Olist" (Olist, published on Kaggle) and are distributed under
+the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+license (CC BY-NC-SA 4.0): https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+Attribution: original data by Olist (Kaggle, CC BY-NC-SA 4.0). The files
+transformed by the Phanex team keep this same license. They also use the IBGE
+2018 population and the Brazilian states GeoJSON provided by the team.
+
+The repository code is under the MIT license (see LICENSE at the root).
+The original Olist data is redistributed only as the original, unmodified
+archive data/raw/olist/IT91_CSV_Olist_Data_Original_ECBD.zip, under
+CC BY-NC-SA 4.0 with attribution to Olist. The extracted CSV files are not
+versioned.

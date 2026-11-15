@@ -1,0 +1,5 @@
+payment_type_key,payment_type,payment_label
+1,credit_card,Credit card
+2,boleto,Boleto
+3,voucher,Voucher
+4,debit_card,Debit card
