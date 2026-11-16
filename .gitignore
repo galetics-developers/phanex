@@ -67,3 +67,15 @@ temp/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# --- Presentation---
+# The deliverable is the .pptx. The deck keeps being edited in Canva by the team.
+apps/presentation/content/
+apps/presentation/template/
+apps/presentation/assets/
+apps/presentation/speaker-notes.md
+scripts/build_presentation.py
+packages/design-system/scripts/sync_deck_assets.py
+packages/design-system/scripts/build_deck.py
+packages/design-system/scripts/build_speaker_notes.py
+GUIA_PROYECTO_FINAL_ECBD.md
