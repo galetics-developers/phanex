@@ -47,8 +47,8 @@ its frame are in [`../../docs/05-design-system.md`](../../docs/05-design-system.
 
 ## Steps before the submission
 
-1. **Canva.** Import the `.pptx`, share it with *Anyone with the link* and write the link below.
-   Edits made there are the ones that count from now on.
+1. **Canva.** The deck is already in Canva, shared with *Anyone with the link*, at the address
+   in the table below. Edits made there are the ones that count from now on.
 2. **PDF.** The PDF of the current version is already here. Export it again from Canva or from
    PowerPoint (*File, Export, Create PDF/XPS*) whenever the deck changes, keeping the same name.
 3. **Repository link.** Make sure the teacher can open the repository, as
@@ -56,7 +56,7 @@ its frame are in [`../../docs/05-design-system.md`](../../docs/05-design-system.
 
 | Link | Value |
 | :-- | :-- |
-| Canva (anyone with the link) | _to be filled in before the submission_ |
+| Canva (anyone with the link) | https://canva.link/re2ohbdjpdntgql |
 
 ## Presentation day
 

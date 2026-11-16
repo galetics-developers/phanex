@@ -103,7 +103,7 @@ deck itself, slide by slide.
 | 9.2 | Commented notebook with its outputs in the repository | `apps/notebooks/final_visualizations.ipynb` |
 | 9.3 | Executive deck in the repository | `apps/presentation/IT91_Phanex_Final_Project_Presentation_ECBD.pptx` |
 | 9.4 | Deck exported to PDF | `apps/presentation/IT91_Phanex_Final_Project_Presentation_ECBD.pdf`; export it again whenever the deck changes |
-| 9.5 | Canva link shared with anyone who has the link | Manual step, recorded in the presentation README |
+| 9.5 | Canva link shared with anyone who has the link | Done; the address is in [`../apps/presentation/README.md`](../apps/presentation/README.md) |
 | 9.6 | Repository link readable by the teacher | Manual step: either the repository is made public or the teacher is added as a collaborator |
 | 9.7 | README links tested in a private browser window | Manual step |
 | 9.8 | Timed rehearsal with the five members | Manual step |
