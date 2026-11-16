@@ -22,11 +22,14 @@ This repository contains a reproducible Python ETL pipeline that builds a star s
 | [`docs/02-data-dictionary.md`](docs/02-data-dictionary.md) | Every column of the model with its source and formula |
 | [`docs/03-data-quality-report.md`](docs/03-data-quality-report.md) | Quality rules, checks and ad hoc queries |
 | [`docs/04-star-schema.md`](docs/04-star-schema.md) | Star schema relationships, cardinalities and keys |
+| [`docs/05-design-system.md`](docs/05-design-system.md) | Colors, scales, declutter rules and the rules of the deck template |
 | [`docs/06-storytelling.md`](docs/06-storytelling.md) | Narrative arc (Setup, Conflict, Resolution) with the notebook findings and their lineage |
+| [`docs/07-qa-checklist.md`](docs/07-qa-checklist.md) | QA and integration checklist, accessibility, version control and final submission |
 | [`docs/08-setup-and-run.md`](docs/08-setup-and-run.md) | Requirements, installation, Olist data extraction, pipeline run and notebook run (PowerShell) |
 | [`docs/09-repository-structure.md`](docs/09-repository-structure.md) | Annotated tree of the repository |
 | [`apps/bi-dashboard/README.md`](apps/bi-dashboard/README.md) | Opening the Power BI dashboard, setting `DataPath` and the KPI cross-check |
 | [`apps/notebooks/README.md`](apps/notebooks/README.md) | Running the `final_visualizations.ipynb` notebook and its script twin, sections, exports and offline limitation |
+| [`apps/presentation/README.md`](apps/presentation/README.md) | The executive deck: its slides, the Canva link and the PDF export |
 | [`packages/design-system/README.md`](packages/design-system/README.md) | Color rules and the Power BI theme |
 
 ---
