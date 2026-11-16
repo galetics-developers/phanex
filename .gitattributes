@@ -2,3 +2,5 @@
 *.pbix binary
 *.gz binary
 *.zip binary
+*.pptx binary
+*.pdf binary
