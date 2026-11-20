@@ -1,9 +1,8 @@
 """KPI reference for the Power BI dashboard: ``python scripts/kpi_reference.py``.
 
 Reads the star schema in ``data/processed/`` and computes, with exactly the same
-definitions as the DAX measures (spec 002 Def-5, plan 002 section 5), the KPIs of the
-scenarios S0-S3 (Def-9). The output CSV is the reference used to check the dashboard
-figures within 0.1 %.
+definitions as the DAX measures, the KPIs of the scenarios S0-S3. The output CSV
+is the reference used to check the dashboard figures within 0.1 %.
 
 Only pandas, numpy and the standard library are used. Paths and domain constants come from
 ``ecbd_etl.config`` (single source of configuration); no function reads the system date.

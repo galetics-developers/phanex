@@ -43,6 +43,4 @@ If `tokens.json` is missing, is not valid JSON or lacks a token, the generator e
 
 *View → Themes → Browse for themes* → `apps/bi-dashboard/theme/ecbd-theme.json`. If Power BI rejects a `visualStyles` property, it is removed from the generator (not from the JSON by hand), the theme is regenerated, the property is applied by hand in the visual's format pane and this is documented in the dashboard README.
 
-## Out of scope
-
-This package does not generate `ecbd.mplstyle` (Matplotlib style) yet: it is outside the current scope.
+The Matplotlib style is applied in memory by `ecbd_viz.style`; this package does not emit an `ecbd.mplstyle` file.

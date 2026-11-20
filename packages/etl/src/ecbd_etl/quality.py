@@ -1,24 +1,7 @@
-"""Data quality: the closed list of 45 rules, the strict log, the ETL exceptions and the
-14 validate rules.
+"""Data quality: the 45-rule log, ETL exceptions and the 14 validate rules.
 
-The rule list is closed (RF-65, D9): the log rejects unknown rules and refuses to
-export unless every rule was recorded exactly once. The export schema has four
-columns: ``stage, rule, rows_affected, action``. ``evaluate_rules`` computes all 14
-validate rules before deciding (RF-61); ``write_failed_log`` is the only writer of
-``data/interim/`` and ``clear_failed_log`` deletes a previous failure log after load.
-
-Units of ``rows_affected`` (see plan section 4):
-- order lines: ``exact_duplicates_items``, the 8 D3 rules, ``zip_without_geolocation``,
-  ``null_delivered_date_key``, ``null_payment_type_key``, ``null_review_score``;
-- source rows: ``exact_duplicates_other``, ``coordinates_outside_box``,
-  ``review_score_out_of_range``, ``review_extra_per_order``, ``payment_not_defined``,
-  ``payment_installments_zero``;
-- values: ``unparseable_dates``;
-- orders: ``orders_without_items``, ``orders_without_payment`` and the four D4 delivery
-  rules;
-- products: ``product_dims_imputed`` and ``null_photos_qty``;
-- states: ``state_without_centroid`` and ``geojson_state_mismatch``;
-- problems: ``inputs_valid``.
+The rule list is closed (RF-65, D9): unknown rules are rejected and the log is
+exported only when every rule was recorded exactly once.
 """
 
 import pandas as pd
