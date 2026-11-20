@@ -3,8 +3,6 @@
 Reads ``packages/design-system/tokens.json`` (the single source of colors, fonts and sizes)
 and writes ``apps/bi-dashboard/theme/ecbd-theme.json``. Standard library only; the output
 is deterministic (fixed key order, 2-space indent, UTF-8 without BOM, LF newlines).
-
-This generator does not produce ``ecbd.mplstyle``: that file is out of scope for this spec.
 """
 
 import argparse

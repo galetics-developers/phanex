@@ -556,9 +556,7 @@ MAX_MACRO_CATEGORIES = 8
 UNCATEGORIZED_PT = "sem_categoria"
 UNCATEGORIZED_MACRO = "uncategorized"
 
-# A13: analytics_flat compression, fixed after measuring the first successful run (T8):
-# the plain analytics_flat.csv weighed 77,557,724 bytes (> FLAT_SIZE_LIMIT_BYTES), so it
-# is written as analytics_flat.csv.gz.
+# A13: write analytics_flat as gzip because the plain CSV exceeded FLAT_SIZE_LIMIT_BYTES.
 ANALYTICS_FLAT_GZIP = True
 FLAT_SIZE_LIMIT_BYTES = 50_000_000
 ANALYTICS_FLAT_TABLE = "analytics_flat"

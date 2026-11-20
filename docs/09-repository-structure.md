@@ -71,8 +71,7 @@ Annotated tree of the repository, with one comment per entry. Large folders (the
 │   ├── 06-storytelling.md                  # Narrative arc (Setup, Conflict, Resolution) with the notebook findings
 │   ├── 07-qa-checklist.md                  # QA, accessibility, version control and submission checklist
 │   ├── 08-setup-and-run.md                 # Environment, Olist data, pipeline run and notebook run
-│   ├── 09-repository-structure.md          # This document
-│   └── assets/                             # Documentation images (kept with .gitkeep)
+│   └── 09-repository-structure.md          # This document
 ├── scripts/                                # Command-line entry points
 │   ├── run_pipeline.py                     # Single pipeline command
 │   ├── build_themes.py                     # Launcher of the Power BI theme generator
@@ -91,7 +90,6 @@ Annotated tree of the repository, with one comment per entry. Large folders (the
 
 ## 2. Notes
 
-- Deliverable folders that are still empty are kept in Git with a `.gitkeep` file and are marked "reserved" in the tree.
 - `data/raw/olist/` versions only the original archive. The 9 CSV files extracted from it (see [`08-setup-and-run.md`](08-setup-and-run.md#4-olist-source-data)) and any other file in that folder are ignored by Git.
 - `apps/presentation/` versions the deck and its README only. The template, the slide text, the copies of the figures and the speaker notes are local working material: the team keeps editing the deck in Canva, so a generator inside the repository would drift away from the real deck.
 - `data/interim/` is not versioned. The local virtual environment (`.venv/`) is not versioned either.

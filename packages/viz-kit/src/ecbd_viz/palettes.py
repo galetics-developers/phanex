@@ -7,7 +7,7 @@ from pathlib import Path
 import matplotlib
 from matplotlib.colors import to_hex
 
-# ecbd_viz -> src -> viz-kit -> packages (editable install, plan P2)
+# ecbd_viz -> src -> viz-kit -> packages (editable install)
 TOKENS_PATH = Path(__file__).resolve().parents[3] / "design-system" / "tokens.json"
 CSS_ONLY_FAMILIES = {"system-ui"}
 
