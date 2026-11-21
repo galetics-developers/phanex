@@ -62,7 +62,7 @@ The unit depends on the rule; it is fixed in the plan and in the code (`quality.
 | `estimated_date_missing` | `excluded` | lines | 0 | Rule 6 (per order): without an estimated date there is no delay and no `estimated_date_key`, which can never be null; the remaining lines of the order are excluded |
 | `purchase_outside_period` | `excluded` | lines | 371 | Rule 7 (per order): purchase null or outside 2017-01-01 00:00:00 .. 2018-08-31 23:59:59. These are the 371 lines of 313 orders: 312 from 2016 (September to December) and 1 from September 2018 |
 | `customer_state_invalid` | `excluded` | lines | 0 | Rule 8 (per order): customer UF outside the 27 |
-| `orders_without_items` | `reported` | orders | 1 088 | Orders left without any line, which disappear from the following stages: 775 have no items in the source (603 `unavailable`, 164 `canceled`, 5 `created`, 2 `invoiced`, 1 `shipped`) and 313 lost all their lines through rule 7. That is why `unavailable` and `created` do not appear in the fact table |
+| `orders_without_items` | `reported` | orders | 1088 | Orders left without any line, which disappear from the following stages: 775 have no items in the source (603 `unavailable`, 164 `canceled`, 5 `created`, 2 `invoiced`, 1 `shipped`) and 313 lost all their lines through rule 7. That is why `unavailable` and `created` do not appear in the fact table |
 | `review_score_out_of_range` | `excluded` | source rows | 0 | Reviews with a null score or a score outside 1–5; they are discarded before choosing the order's review (RF-31) |
 | `review_extra_per_order` | `excluded` | source rows | 551 | An order with several reviews keeps only the most recent one (`review_creation_date`, then `review_answer_timestamp`, then `review_id`); the others are discarded so the order's satisfaction is not duplicated (D5) |
 | `payment_not_defined` | `excluded` | source rows | 3 | Payments of type `not_defined`: they do not belong to the catalog of 4 payment types |
@@ -84,7 +84,7 @@ The unit depends on the rule; it is fixed in the plan and in the code (`quality.
 
 | Rule | Action | Unit | Count | Reason and treatment |
 | :-- | :-- | :-- | --: | :-- |
-| `null_delivered_date_key` | `reported` | lines | 2 407 | Lines without a valid delivery (undelivered or with flag 1): null `delivered_date_key`, allowed by Decision 4; not an orphan |
+| `null_delivered_date_key` | `reported` | lines | 2407 | Lines without a valid delivery (undelivered or with flag 1): null `delivered_date_key`, allowed by Decision 4; not an orphan |
 | `null_payment_type_key` | `reported` | lines | 0 | Lines of orders without valid payments (null `payment_type_key` allowed) |
 | `null_review_score` | `reported` | lines | 936 | Lines of the 744 orders without a valid review; null `review_score` and `is_negative_review` (not a foreign key) |
 | `null_photos_qty` | `reported` | products | 610 | `dim_product` products without `photos_qty` in the source; kept null, not imputed (RF-36). They are the products without a category |
@@ -100,7 +100,7 @@ All of them are evaluated before deciding (RF-61); if any is > 0, the 45-row fai
 | `fact_item_key_unique` | `validated` | lines | 0 | `order_item_key` unique and non-null |
 | `fact_order_item_unique` | `validated` | lines | 0 | `order_id` + `order_item_id` unique: the grain of the fact table (RF-49) |
 | `fact_no_orphans` | `validated` | lines | 0 | The 9 foreign keys exist in their dimension; only `delivered_date_key` (no valid delivery, null `delivery_days`) and `payment_type_key` (no valid payments, null `payment_value_order`) can be null; a non-null payment type outside the catalog counts as an orphan |
-| `fact_rows_preserved` | `validated` | lines | 0 | Source lines (112 650) = fact rows (112 279) + `exact_duplicates_items` (0) + the 8 D3 rules (371). Guarantees that no line is lost without a record; value = absolute difference |
+| `fact_rows_preserved` | `validated` | lines | 0 | Source lines (112650) = fact rows (112279) + `exact_duplicates_items` (0) + the 8 D3 rules (371). Guarantees that no line is lost without a record; value = absolute difference |
 | `csp_dims_only_used_keys` | `validated` | dimension rows | 0 | `dim_customer`, `dim_seller` and `dim_product` only contain keys used by the fact table (Decision 10) |
 | `fact_within_period` | `validated` | lines | 0 | Every `purchase_date_key` within 20170101..20180831 |
 | `dim_date_coverage` | `validated` | rows | 0 | `dim_date` continuous 2016-01-01..2018-12-31 without repeats; `purchase_date_key` and `estimated_date_key` non-null and, like `delivered_date_key` when it is not null, present in `dim_date` |
@@ -109,7 +109,7 @@ All of them are evaluated before deciding (RF-61); if any is > 0, the 45-row fai
 | `categories_mapped` | `validated` | products | 0 | Every product has `category_en` and `macro_category` from the map (D2) |
 | `macro_categories_max_8` | `validated` | extra macro categories | 0 | At most 8 macro categories (there are exactly 8, including `uncategorized`) |
 | `dim_state_27` | `validated` | states | 0 | `dim_state` has exactly the 27 UF, without repeats or extras |
-| `fact_min_rows` | `validated` | missing lines | 0 | At least 5 000 rows in the fact table (R4); value = shortfall against 5 000 |
+| `fact_min_rows` | `validated` | missing lines | 0 | At least 5000 rows in the fact table (R4); value = shortfall against 5000 |
 
 ## 3. Time, size and compression decision (A13, RF-73, RNF-5)
 
@@ -117,12 +117,12 @@ All of them are evaluated before deciding (RF-61); if any is > 0, the 45-row fai
 | :-- | --: | --: |
 | Time (`Measure-Command`) | 17.9 s | 19.1 s |
 | Time printed by the pipeline | — | 17.6 s |
-| `analytics_flat.csv` uncompressed | 77 557 724 B | — |
-| `analytics_flat.csv.gz` | 25 799 405 B | 25 799 405 B |
+| `analytics_flat.csv` uncompressed | 77557724 B | — |
+| `analytics_flat.csv.gz` | 25799405 B | 25799405 B |
 
-**Decision A13:** the plain CSV was 77 557 724 bytes, above the 50 000 000-byte limit (`FLAT_SIZE_LIMIT_BYTES`, GitHub's warning threshold). That is why `config.py` sets `ANALYTICS_FLAT_GZIP = True` and `load` writes `analytics_flat.csv.gz` with `compression={"method": "gzip", "mtime": 0}` (the gzip header has `mtime` = 0, checked in Q28), deletes the uncompressed variant and leaves exactly 10 files. No Git LFS and no Parquet.
+**Decision A13:** the plain CSV was 77557724 bytes, above the 50000000-byte limit (`FLAT_SIZE_LIMIT_BYTES`, GitHub's warning threshold). That is why `config.py` sets `ANALYTICS_FLAT_GZIP = True` and `load` writes `analytics_flat.csv.gz` with `compression={"method": "gzip", "mtime": 0}` (the gzip header has `mtime` = 0, checked in Q28), deletes the uncompressed variant and leaves exactly 10 files. No Git LFS and no Parquet.
 
-Size of the 10 files of the reference run (bytes): `fact_order_items.csv` 26 294 180; `analytics_flat.csv.gz` 25 799 405; `dim_customer.csv` 13 638 183; `dim_product.csv` 3 449 649; `dim_seller.csv` 300 102; `dim_date.csv` 63 645; `dim_state.csv` 2 015; `data_quality_report.csv` 1 833; `dim_order_status.csv` 252; `dim_payment_type.csv` 147. None exceeds 50 MB.
+Size of the 10 files of the reference run (bytes): `fact_order_items.csv` 26294180; `analytics_flat.csv.gz` 25799405; `dim_customer.csv` 13638183; `dim_product.csv` 3449649; `dim_seller.csv` 300102; `dim_date.csv` 63645; `dim_state.csv` 2015; `data_quality_report.csv` 1833; `dim_order_status.csv` 252; `dim_payment_type.csv` 147. None exceeds 50 MB.
 
 ## 4. RF-18: `data/raw/` is not modified (H)
 
@@ -518,7 +518,7 @@ report("Q7", flag_orders == expected and not_null == 0,
 Output: Q7: PASS | orders with flag 1=8; delivered_missing_date + delivered_before_purchase=8; lines without valid delivery having a metric=0/2407
 ```
 
-Result: **passed**: 8 orders with flag 1 = 8 + 0; none of the 2 407 lines without a valid delivery has a delivery metric (matches `null_delivered_date_key`).
+Result: **passed**: 8 orders with flag 1 = 8 + 0; none of the 2407 lines without a valid delivery has a delivery metric (matches `null_delivered_date_key`).
 
 ### Q8 — One review per order, the most recent (RF-30, RF-31)
 
@@ -693,7 +693,7 @@ Result: **passed**.
 
 ### Q15 — Delivery metrics and bands recomputed (RF-39, RF-40)
 
-Recomputes from the dates of the orders CSV, with its own bands, for the 98 353 orders of the fact table.
+Recomputes from the dates of the orders CSV, with its own bands, for the 98353 orders of the fact table.
 
 ```python
 # --- Q15 (RF-39, RF-40): delivery metrics recomputed from the source dates
@@ -730,7 +730,7 @@ report("Q15", sum(diff.values()) == 0,
 Output: Q15: PASS | 98353 orders (96203 valid deliveries): differences={'delay_days': 0, 'is_late': 0, 'delay_band_order': 0, 'delay_band': 0, 'delivery_days': 0, 'promised_days': 0}
 ```
 
-Result: **passed**: 96 203 valid deliveries = 96 211 `delivered` − 8 flagged.
+Result: **passed**: 96203 valid deliveries = 96211 `delivered` − 8 flagged.
 
 ### Q16 — `item_total`, `freight_ratio`, `same_state`, `is_negative_review` (RF-42, RF-43)
 
@@ -816,7 +816,7 @@ Result: **passed**.
 
 ### Q19 — `orders_per_100k` of the 27 UF (RF-47)
 
-Distinct orders with a status other than `canceled` present in the fact table, by customer UF, ÷ population × 100 000 (Decision 18), with a 1e-9 tolerance.
+Distinct orders with a status other than `canceled` present in the fact table, by customer UF, ÷ population × 100000 (Decision 18), with a 1e-9 tolerance.
 
 ```python
 # --- Q19 (RF-47): orders_per_100k recomputed for the 27 UF (tolerance 1e-9)
@@ -990,7 +990,7 @@ report("Q26", not key_cols and same_rows and flat.columns[:20].tolist() == fact_
 Output: Q26: PASS | columns=62; key columns=[]; rows flat=112279 fact=112279; same order_id/order_item_id sequence=True; first 20 columns = fact without keys=True
 ```
 
-Result: **passed**: 62 columns, no keys, the same 112 279 rows in the same order as the fact table.
+Result: **passed**: 62 columns, no keys, the same 112279 rows in the same order as the fact table.
 
 ### Q27 — Customer attributes per row (RF-59)
 
@@ -1306,7 +1306,7 @@ fact_order_items.csv rows E1/copy: 112279 112279 | differing rows: 4 | columns: 
 dim_customer.csv rows E1/copy: 98353 98353 | differing rows: 3 | columns: ['lat', 'lng']
 ```
 
-**Passes:** the items line counts in `exact_duplicates_items` (1) and the sellers line in `exact_duplicates_other` (1); the geolocation line does **not** count (if it were deduplicated, `exact_duplicates_other` would be 2). The fact table keeps 112 279 rows and `fact_rows_preserved` = 0. The only output differences are the ones expected from the exemption: the repeated row weighs in the median of ZIP 01037, whose centroid becomes `-23.54562128115268, -46.63929204800168` for the 3 customers of that ZIP (and in their 4 distances).
+**Passes:** the items line counts in `exact_duplicates_items` (1) and the sellers line in `exact_duplicates_other` (1); the geolocation line does **not** count (if it were deduplicated, `exact_duplicates_other` would be 2). The fact table keeps 112279 rows and `fact_rows_preserved` = 0. The only output differences are the ones expected from the exemption: the repeated row weighs in the median of ZIP 01037, whose centroid becomes `-23.54562128115268, -46.63929204800168` for the 3 customers of that ZIP (and in their 4 distances).
 
 ### F of RF-27: duplicated natural key and repeated `review_id`
 

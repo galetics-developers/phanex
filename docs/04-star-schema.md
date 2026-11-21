@@ -123,7 +123,7 @@ The 9 relationships go from the dimension (one side) to the fact table (many sid
 | # | Dimension (key, one side) | Fact (foreign key, many side) | Cardinality | Direction | Status | Nulls in the foreign key |
 | --: | :-- | :-- | :-- | :-- | :-- | :-- |
 | 1 | `dim_date.date_key` | `fact_order_items.purchase_date_key` | 1:* | Single (dim → fact) | **Active** | No |
-| 2 | `dim_date.date_key` | `fact_order_items.delivered_date_key` | 1:* | Single (dim → fact) | **Inactive** (`USERELATIONSHIP`) | Yes: no valid delivery (2 407 lines) |
+| 2 | `dim_date.date_key` | `fact_order_items.delivered_date_key` | 1:* | Single (dim → fact) | **Inactive** (`USERELATIONSHIP`) | Yes: no valid delivery (2407 lines) |
 | 3 | `dim_date.date_key` | `fact_order_items.estimated_date_key` | 1:* | Single (dim → fact) | **Inactive** (`USERELATIONSHIP`) | No |
 | 4 | `dim_customer.customer_key` | `fact_order_items.customer_key` | 1:* | Single (dim → fact) | Active | No |
 | 5 | `dim_state.customer_state_key` | `fact_order_items.customer_state_key` | 1:* | Single (dim → fact) | Active | No |

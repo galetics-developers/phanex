@@ -8,7 +8,7 @@ This repository contains a reproducible Python ETL pipeline that builds a star s
 
 - **Analysis period:** purchases from 2017-01-01 00:00:00 to 2018-08-31 23:59:59 (both inclusive).
 - **Currency:** Brazilian real (BRL, R$), not converted.
-- **Fact table grain:** one order line (`fact_order_items`, 112 279 rows in the last run).
+- **Fact table grain:** one order line (`fact_order_items`, 112279 rows in the last run).
 
 **Quick start:** follow [`docs/08-setup-and-run.md`](docs/08-setup-and-run.md) to set up the environment, extract the Olist data and run the pipeline.
 

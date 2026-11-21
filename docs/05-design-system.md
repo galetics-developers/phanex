@@ -1,8 +1,8 @@
 # 05 — Design system
 
 This document is the visual contract of the project. It states which colors, fonts and layout
-rules every deliverable follows — the Power BI dashboard, the notebook figures and the executive
-deck — and how each rule is checked before a change is approved. The package that holds the
+rules every deliverable follows (the Power BI dashboard, the notebook figures and the executive
+deck) and how each rule is checked before a change is approved. The package that holds the
 values and generates the themes is described in
 [`packages/design-system/README.md`](../packages/design-system/README.md); this document explains
 the rules behind them and the ones that apply to the deck.
@@ -55,7 +55,7 @@ blindness; red against green does not.
 
 - **Zero baseline:** every bar chart starts at zero, with no exception. In Power BI the Y axis
   minimum is set to 0 on each visual; in Matplotlib the limit is never cropped.
-- **Diverging midpoint:** a diverging scale is centered on the value that gives it meaning —
+- **Diverging midpoint:** a diverging scale is centered on the value that gives it meaning,
   zero for the delay, or the national average when the comparison is against that average. The
   reason is stated next to the figure.
 - **Log scale** only for a magnitude that spans several orders, such as item prices, and the
