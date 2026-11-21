@@ -151,14 +151,14 @@ The 9 relationships go from the dimension (one side) to the fact table (many sid
 
 Surrogate keys are deterministic integers: with the same inputs, every run assigns the same keys. There are no "unknown" members: the nullable foreign keys (`delivered_date_key`, `payment_type_key`) are left empty.
 
-**Grain:** one order line. Order-level measures (orders, average ticket, average delay, average score) must be aggregated by `order_id` (`DISTINCTCOUNT` / `AVERAGEX`), because the order fields are repeated on every line (see `docs/02`, §12).
+**Grain:** one order line. Order-level measures (orders, average ticket, average delay, average score) must be aggregated by `order_id` (`DISTINCTCOUNT` / `AVERAGEX`), because the order fields are repeated on every line (see `docs/02`, section 12).
 
 ## 4. Geographic hierarchy
 
 - The drill-down hierarchy is **`region` → `state` → `city`**, entirely within `dim_customer` (location of the order's customer).
 - `dim_state` is not part of that hierarchy: it provides the **2018 population** (`population_2018`) and the state **centroids** (`centroid_lat`, `centroid_lng`) for per-capita indicators and state maps.
 
-## 5. Deviations from the guide's schema (§6.6)
+## 5. Deviations from the guide's schema (section 6.6)
 
 | Topic | Implementation | Reason |
 | :-- | :-- | :-- |

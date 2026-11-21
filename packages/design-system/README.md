@@ -6,7 +6,7 @@ Single source of the colors, fonts, sizes, radii, spacing and shadows of Phanex.
 
 | File | What it is |
 |---|---|
-| `tokens.json` | Design tokens (guide §7.2, copied as is): interface colors (`color.ui`), data palettes (`color.data`: qualitative Okabe-Ito, sequential Viridis, diverging RdBu, highlight and muted gray), fonts, sizes, weights, radii, spacing and shadows. |
+| `tokens.json` | Design tokens (guide section 7.2, copied as is): interface colors (`color.ui`), data palettes (`color.data`: qualitative Okabe-Ito, sequential Viridis, diverging RdBu, highlight and muted gray), fonts, sizes, weights, radii, spacing and shadows. |
 | `scripts/build_themes.py` | Power BI theme generator. It reads `tokens.json`, builds the theme, validates it against an allow-list of keys from the official theme schema (Report Theme JSON Schema 2.159) and writes it. It only uses the Python standard library. |
 
 The generated theme is saved to `apps/bi-dashboard/theme/ecbd-theme.json`. **It is not edited by hand**: any change is made in `tokens.json` (or in the generator's mapping) and the theme is regenerated.
@@ -36,7 +36,7 @@ If `tokens.json` is missing, is not valid JSON or lacks a token, the generator e
 - `good` / `neutral` / `bad`: ends and center of RdBu (`#2166AC`, `#F7F7F7`, `#B2182B`).
 - `minimum` / `center` / `maximum`: Viridis (`#440154`, `#21918C`, `#FDE725`); `null`: `#BFBFBF`.
 - Foreground and backgrounds: `ink`, `slate`, `steel`, `canvas`, `surface`, `hairline`; `tableAccent`: `accent`.
-- `textClasses`: `callout` 32 pt, `title` 14 pt, `header` 12 pt (Segoe UI Semibold) and `label` 10 pt (Segoe UI). The token sizes take precedence over those of guide §8.5 (decision P-1).
+- `textClasses`: `callout` 32 pt, `title` 14 pt, `header` 12 pt (Segoe UI Semibold) and `label` 10 pt (Segoe UI). The token sizes take precedence over those of guide section 8.5 (decision P-1).
 - `visualStyles`: `hairline` border with radius 12, no shadow and left-aligned title on every visual; page background `surface`.
 
 ## How to import it into Power BI

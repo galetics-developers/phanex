@@ -76,7 +76,7 @@ The unit depends on the rule; it is fixed in the plan and in the code (`quality.
 | :-- | :-- | :-- | --: | :-- |
 | `non_delivered_with_delivery_date` | `nullified` | orders | 1 | Undelivered order (here, `canceled`) with a delivery date: that date is ignored and all its delivery metrics are null; the flag stays at 0 and the order stays in the fact table |
 | `delivered_missing_date` | `flagged` | orders | 8 | `delivered` orders without a delivery date: `delivery_data_missing = 1`, null delivery metrics, and the order and its GMV are kept (A3, A5) |
-| `delivered_before_purchase` | `flagged` | orders | 0 | `delivered` orders with a delivery earlier than the purchase: same treatment as the previous rule (deviation from guide §6.2, which excludes them) |
+| `delivered_before_purchase` | `flagged` | orders | 0 | `delivered` orders with a delivery earlier than the purchase: same treatment as the previous rule (deviation from guide section 6.2, which excludes them) |
 | `estimated_before_purchase` | `nullified` | orders | 0 | Estimated date earlier than the purchase: null `promised_days`; it does not affect `delay_days` or the flag |
 | `zip_without_geolocation` | `nullified` | lines | 555 | Lines whose customer or seller ZIP has no centroid (ZIP missing from the geolocation, or with all its coordinates outside the bounding box): null `distance_km` and null coordinates, never 0 (A8) |
 
@@ -120,7 +120,7 @@ All of them are evaluated before deciding (RF-61); if any is > 0, the 45-row fai
 | `analytics_flat.csv` uncompressed | 77 557 724 B | — |
 | `analytics_flat.csv.gz` | 25 799 405 B | 25 799 405 B |
 
-**Decision A13:** the plain CSV was 77 557 724 bytes, above the 50 000 000-byte limit (`FLAT_SIZE_LIMIT_BYTES`, GitHub's warning threshold). That is why `config.py` sets `ANALYTICS_FLAT_GZIP = True` and `load` writes `analytics_flat.csv.gz` with `compression={"method": "gzip", "mtime": 0}` (the gzip header has `mtime` = 0, checked in Q28), deletes the uncompressed variant and leaves exactly 10 files. No Git LFS and no Parquet. The spec sets no time limit (RNF-5).
+**Decision A13:** the plain CSV was 77 557 724 bytes, above the 50 000 000-byte limit (`FLAT_SIZE_LIMIT_BYTES`, GitHub's warning threshold). That is why `config.py` sets `ANALYTICS_FLAT_GZIP = True` and `load` writes `analytics_flat.csv.gz` with `compression={"method": "gzip", "mtime": 0}` (the gzip header has `mtime` = 0, checked in Q28), deletes the uncompressed variant and leaves exactly 10 files. No Git LFS and no Parquet.
 
 Size of the 10 files of the reference run (bytes): `fact_order_items.csv` 26 294 180; `analytics_flat.csv.gz` 25 799 405; `dim_customer.csv` 13 638 183; `dim_product.csv` 3 449 649; `dim_seller.csv` 300 102; `dim_date.csv` 63 645; `dim_state.csv` 2 015; `data_quality_report.csv` 1 833; `dim_order_status.csv` 252; `dim_payment_type.csv` 147. None exceeds 50 MB.
 
@@ -170,7 +170,7 @@ A81F0D1F27B27E7293F761BC79E3CE8F348EE39C4B3ED3E49BDE38F478586278  olist/product_
 
 ## 5. RF-19: forced failure with data, in a copy (F)
 
-Procedure (plan §1.b): a copy of the repository in a temporary folder outside it, without `.git` or `.venv` (and without caches or local AI configuration); two mandatory inputs are removed from **the copy** and the copy's pipeline is run with the interpreter of the real `.venv`. `scripts/run_pipeline.py` puts the copy's `src` first on `sys.path`, and the banner prints the root used.
+Procedure (plan section 1.b): a copy of the repository in a temporary folder outside it, without `.git` or `.venv` (and without caches or local AI configuration); two mandatory inputs are removed from **the copy** and the copy's pipeline is run with the interpreter of the real `.venv`. `scripts/run_pipeline.py` puts the copy's `src` first on `sys.path`, and the banner prints the root used.
 
 ```powershell
 robocopy <repo> <tmp>\repo_copy /E /XD .git .venv __pycache__ .ruff_cache .claude .agents .codegraph
@@ -240,7 +240,7 @@ git ls-files --others --exclude-standard   # what "git add ." would add
 
 **Passed**, with the caveat of `docs/constitution.md`, which is reported as a pending decision.
 
-**Update (2026-11-13).** The pending decision on `docs/constitution.md` was resolved: it is no longer tracked (it remains in the earlier history). Since that date, the contents of `data/raw/olist/` stay ignored except the original Olist archive `IT91_CSV_Olist_Data_Original_ECBD.zip`, which is versioned (see row 16 of [`docs/01-project-manual.md`](01-project-manual.md)). The rows above are the dated record of the spec 001 check and are not rewritten.
+**Update (2026-11-13).** The pending decision on `docs/constitution.md` was resolved: it is no longer tracked (it remains in the earlier history). Since that date, the contents of `data/raw/olist/` stay ignored except the original Olist archive `IT91_CSV_Olist_Data_Original_ECBD.zip`, which is versioned (see row 16 of [`docs/01-project-manual.md`](01-project-manual.md)).
 
 ## 7. RNF-2: linter, absolute paths and `os.path`
 
@@ -268,7 +268,7 @@ ROOT = Path(sys.argv[1]).resolve()
 PROC = ROOT / "data" / "processed"
 RAW = ROOT / "data" / "raw" / "olist"
 SEED = 42
-BOX = (-34.0, 6.0, -74.0, -34.0)  # lat_min, lat_max, lng_min, lng_max (spec D9)
+BOX = (-34.0, 6.0, -74.0, -34.0)  # lat_min, lat_max, lng_min, lng_max
 TXT = {"dtype": str, "keep_default_na": False, "na_values": [""]}
 
 
@@ -790,7 +790,7 @@ Result: **passed**: `distance_km` is null if and only if a coordinate is missing
 
 ### Q18 — Regions of the 27 UF and macro categories (RF-45, RF-46)
 
-UF → region map written from guide §6.4, independent of `config.py`.
+UF → region map written from guide section 6.4, independent of `config.py`.
 
 ```python
 # --- Q18 (RF-45, RF-46): regions of the 27 UF (guide 6.4) and macro categories
@@ -1162,7 +1162,7 @@ Result: **passed**: exact columns, 45 rows, the D9 set and order (`stage`, `rule
 
 **Discrepancies in Q1–Q30:** none. No code was modified for this report.
 
-**Observations** (not breaches of the spec):
+**Observations**:
 
 1. Scientific notation in 8 decimal values (Q28; `load.py:31`, `config.py:568`).
 2. `scripts/build_ibge_population.py` repeats the path of the IBGE input and UF codes outside `config.py` (Q1); it is a helper that is not part of the pipeline.
@@ -1174,7 +1174,7 @@ Result: **passed**: exact columns, 45 rows, the D9 set and order (`stage`, `rule
 
 ## 10. Desirable tests (T10-B)
 
-Desirable block of the spec (not blocking). Mechanism of plan §1.a and §1.b. Everything temporary (repository copies, the E3 venv, scripts) lives in a working folder outside the repository, abbreviated here as `<tmp>`. Each copy is created with `robocopy <repo> <tmp>\<case> /E /XD .git .venv __pycache__ .ruff_cache .claude .agents .codegraph .codex .cursor .gemini` and includes the repository's `data/raw/` and `data/processed/`. Except for E3, they are run with the E1 interpreter (`.venv`, Python 3.14.7, pandas 3.1.1, numpy 2.5.4). In each F case, the `Repository root:` line of the banner is checked to be the copy **before** accepting the result. The hash is SHA-256 per file plus an aggregate hash of the sorted `HASH  path` list, the same format as section 4. No code was fixed.
+Desirable block of the spec (not blocking). Mechanism of plan section 1.a and section 1.b. Everything temporary (repository copies, the E3 venv, scripts) lives in a working folder outside the repository, abbreviated here as `<tmp>`. Each copy is created with `robocopy <repo> <tmp>\<case> /E /XD .git .venv __pycache__ .ruff_cache .claude .agents .codegraph .codex .cursor .gemini` and includes the repository's `data/raw/` and `data/processed/`. Except for E3, they are run with the E1 interpreter (`.venv`, Python 3.14.7, pandas 3.1.1, numpy 2.5.4). In each F case, the `Repository root:` line of the banner is checked to be the copy **before** accepting the result. The hash is SHA-256 per file plus an aggregate hash of the sorted `HASH  path` list, the same format as section 4. No code was fixed.
 
 ### Summary
 
@@ -1415,7 +1415,7 @@ max |E1 - E3|: lat 7.1e-15, lng 1.4e-14, centroid_lat 3.6e-15, centroid_lng 7.1e
 e.g. dim_customer lat -18.707823797662655 (E1) vs -18.707823797662652 (E3)
 ```
 
-**Passes** under the criterion of plan §1.a: the log is identical to E1 (the 45 counts), the tables without coordinates have an identical hash and the differences are limited to the last digits of the coordinate and distance decimals (≤ 1.6e-12 km, same nulls), which come from the median computation in each pandas version. It is not a failure: RF-21 only requires an identical hash with the same interpreter and versions (checked by the H above).
+**Passes** under the criterion of plan section 1.a: the log is identical to E1 (the 45 counts), the tables without coordinates have an identical hash and the differences are limited to the last digits of the coordinate and distance decimals (≤ 1.6e-12 km, same nulls), which come from the median computation in each pandas version. It is not a failure: RF-21 only requires an identical hash with the same interpreter and versions (checked by the H above).
 
 ### Integrity of the real data
 
