@@ -8,15 +8,15 @@ Describes every column of the 10 files that the pipeline (`python scripts/run_pi
 
 | File | Rows | Columns | Grain |
 | :-- | --: | --: | :-- |
-| `fact_order_items.csv` | 112 279 | 30 | One order line |
-| `dim_date.csv` | 1 096 | 11 | One day (2016-01-01 to 2018-12-31, continuous) |
-| `dim_customer.csv` | 98 353 | 9 | One `customer_id` (in Olist, one per order) used by the fact table |
-| `dim_seller.csv` | 3 068 | 7 | One seller used by the fact table |
-| `dim_product.csv` | 32 787 | 9 | One product used by the fact table |
+| `fact_order_items.csv` | 112279 | 30 | One order line |
+| `dim_date.csv` | 1096 | 11 | One day (2016-01-01 to 2018-12-31, continuous) |
+| `dim_customer.csv` | 98353 | 9 | One `customer_id` (in Olist, one per order) used by the fact table |
+| `dim_seller.csv` | 3068 | 7 | One seller used by the fact table |
+| `dim_product.csv` | 32787 | 9 | One product used by the fact table |
 | `dim_state.csv` | 27 | 7 | One Brazilian federative unit (UF) |
 | `dim_payment_type.csv` | 4 | 3 | One payment type (fixed catalog) |
 | `dim_order_status.csv` | 8 | 4 | One order status (fixed catalog) |
-| `analytics_flat.csv.gz` | 112 279 | 62 | One order line, with every attribute already joined (no keys) |
+| `analytics_flat.csv.gz` | 112279 | 62 | One order line, with every attribute already joined (no keys) |
 | `data_quality_report.csv` | 45 | 4 | One quality rule |
 
 ### CSV format
@@ -55,7 +55,7 @@ Fact table. Rows sorted by `order_id`, `order_item_id`. The examples are the fir
 | `order_id` | text | Order identifier (32 hexadecimal characters) | `00010242fe8c5a6d1ba2dd792cb16214` | `items.order_id` | — |
 | `order_item_id` | integer | Line number within the order (1..21) | `1` | `items.order_item_id` | — |
 | `purchase_date_key` | integer | `dim_date` key of the purchase date (active relationship) | `20170913` | `orders.order_purchase_timestamp` | year × 10000 + month × 100 + day |
-| `delivered_date_key` | integer (null) | `dim_date` key of the delivery to the customer (inactive relationship). Null without a valid delivery (2 407 lines) | `20170920` | `orders.order_delivered_customer_date` | YYYYMMDD of the delivery; null if the status is not `delivered` or `delivery_data_missing = 1` |
+| `delivered_date_key` | integer (null) | `dim_date` key of the delivery to the customer (inactive relationship). Null without a valid delivery (2407 lines) | `20170920` | `orders.order_delivered_customer_date` | YYYYMMDD of the delivery; null if the status is not `delivered` or `delivery_data_missing = 1` |
 | `estimated_date_key` | integer | `dim_date` key of the estimated delivery date (inactive relationship); never null | `20170929` | `orders.order_estimated_delivery_date` | YYYYMMDD of the estimated date |
 | `customer_key` | integer | `dim_customer` key (customer of the order) | `23451` | Generated | Lookup of `orders.customer_id` in `dim_customer` |
 | `customer_state_key` | integer | `dim_state` key (customer's UF) | `19` | Generated | Lookup of `customers.customer_state` in `dim_state.uf` (19 = RJ) |
@@ -98,7 +98,7 @@ Continuous calendar from 2016-01-01 to 2018-12-31, with English names. Example: 
 | `weekday_number` | integer | Day of the week, 1 = Monday … 7 = Sunday | `5` | Generated | ISO day of the week |
 | `weekday_name` | text | Day name in English (Monday … Sunday) | `Friday` | Generated | Fixed table of names |
 | `is_weekend` | 0/1 | Saturday or Sunday | `0` | Generated | `1` if `weekday_number` ∈ {6, 7} |
-| `commercial_event` | text (null) | Commercial event of the day (at most one): Black Friday, Christmas, Mother's Day or World Cup 2018; empty on 1 055 days | `Black Friday` | `calendar.event` | Join by date with the commercial calendar |
+| `commercial_event` | text (null) | Commercial event of the day (at most one): Black Friday, Christmas, Mother's Day or World Cup 2018; empty on 1055 days | `Black Friday` | `calendar.event` | Join by date with the commercial calendar |
 
 ## 3. `dim_customer.csv`
 
@@ -183,7 +183,7 @@ Fixed catalog of 8 rows: 1 `created` Created, 2 `approved` Approved, 3 `invoiced
 
 ## 9. `analytics_flat.csv.gz`
 
-Flat table for the notebook: one row per order line, in the same order and with the same 112 279 rows as the fact table, without surrogate or foreign keys, so charts need no joins. Read it with `pd.read_csv("data/processed/analytics_flat.csv.gz", compression="gzip", dtype={"customer_zip_prefix": str})`. Examples: the first row (same order as in the fact table), except `commercial_event`.
+Flat table for the notebook: one row per order line, in the same order and with the same 112279 rows as the fact table, without surrogate or foreign keys, so charts need no joins. Read it with `pd.read_csv("data/processed/analytics_flat.csv.gz", compression="gzip", dtype={"customer_zip_prefix": str})`. Examples: the first row (same order as in the fact table), except `commercial_event`.
 
 | Column | Type | Description | Example | Source | Formula / rule |
 | :-- | :-- | :-- | :-- | :-- | :-- |
@@ -200,9 +200,9 @@ Flat table for the notebook: one row per order line, in the same order and with 
 | `promised_days` | decimal (null) | Promised days | `15.625671296296296` | `fact_order_items.promised_days` | `(estimated − purchase) / 1 day` |
 | `delay_days` | integer (null) | Days of delay (negative = early) | `-9` | `fact_order_items.delay_days` | `date(delivery) − date(estimated)` |
 | `is_late` | 0/1 (null) | Late delivery | `0` | `fact_order_items.is_late` | `delay_days > 0` |
-| `delay_band` | text (null) | Delay band | `-9 to -1 (early)` | `fact_order_items.delay_band` | Bands of §1 |
+| `delay_band` | text (null) | Delay band | `-9 to -1 (early)` | `fact_order_items.delay_band` | — |
 | `delay_band_order` | integer (null) | Order 1–5 of the band | `2` | `fact_order_items.delay_band_order` | — |
-| `delivery_data_missing` | 0/1 | Invalid-delivery flag | `0` | `fact_order_items.delivery_data_missing` | See §1 |
+| `delivery_data_missing` | 0/1 | Invalid-delivery flag | `0` | `fact_order_items.delivery_data_missing` | — |
 | `review_score` | integer (null) | Review score (repeated per line) | `5` | `fact_order_items.review_score` | Most recent review |
 | `is_negative_review` | 0/1 (null) | Negative review (repeated per line) | `0` | `fact_order_items.is_negative_review` | `review_score <= 2` |
 | `distance_km` | decimal (null) | Seller–customer distance in km | `301.22920531102295` | `fact_order_items.distance_km` | Haversine |
@@ -218,7 +218,7 @@ Flat table for the notebook: one row per order line, in the same order and with 
 | `weekday_number` | integer | Purchase day of the week (1 = Monday) | `3` | `dim_date.weekday_number` | — |
 | `weekday_name` | text | Name of the purchase day | `Wednesday` | `dim_date.weekday_name` | — |
 | `is_weekend` | 0/1 | Purchase on a weekend | `0` | `dim_date.is_weekend` | — |
-| `commercial_event` | text (null) | Commercial event of the purchase day | `World Cup 2018` | `dim_date.commercial_event` | Empty on 103 922 lines |
+| `commercial_event` | text (null) | Commercial event of the purchase day | `World Cup 2018` | `dim_date.commercial_event` | Empty on 103922 lines |
 | `customer_id` | text | Customer of the order | `3ce436f183e68e07877b285a838db11a` | `dim_customer.customer_id` (via `customer_key`) | — |
 | `customer_unique_id` | text | Customer person | `871766c5855e863f6eccc05f988b23cb` | `dim_customer.customer_unique_id` | — |
 | `customer_city` | text | Customer's city | `Campos Dos Goytacazes` | `dim_customer.city` | — |
@@ -229,7 +229,7 @@ Flat table for the notebook: one row per order line, in the same order and with 
 | `customer_lat` | decimal (null) | Latitude of the customer's ZIP centroid | `-21.762829433744784` | `dim_customer.lat` | Null on 303 lines |
 | `customer_lng` | decimal (null) | Longitude of the customer's ZIP centroid | `-41.3106050334548` | `dim_customer.lng` | Null on 303 lines |
 | `population_2018` | integer | 2018 population of the customer's state (repeated per line) | `17159960` | `dim_state.population_2018` | — |
-| `orders_per_100k` | decimal | Orders per 100 000 inhabitants of the customer's state (static; repeated per line) | `73.74143063270543` | Derived (`fact_order_items`, `ibge`) | Distinct orders of the fact table with an `order_status` other than `canceled`, by customer UF, ÷ `population_2018` × 100 000 |
+| `orders_per_100k` | decimal | Orders per 100000 inhabitants of the customer's state (static; repeated per line) | `73.74143063270543` | Derived (`fact_order_items`, `ibge`) | Distinct orders of the fact table with an `order_status` other than `canceled`, by customer UF, ÷ `population_2018` × 100000 |
 | `seller_id` | text | Seller of the line | `48436dade18ac8b2bce089ec2a041202` | `dim_seller.seller_id` (via `seller_key`) | — |
 | `seller_city` | text | Seller's city | `Volta Redonda` | `dim_seller.seller_city` | — |
 | `seller_state` | text | Seller's UF | `SP` | `dim_seller.seller_state` | — |
@@ -242,7 +242,7 @@ Flat table for the notebook: one row per order line, in the same order and with 
 | `macro_category` | text | Macro category in English | `Leisure & Culture` | `dim_product.macro_category` | — |
 | `weight_g` | decimal | Product weight in g | `650.0` | `dim_product.weight_g` | — |
 | `volume_cm3` | decimal | Product volume in cm³ | `3528.0` | `dim_product.volume_cm3` | — |
-| `photos_qty` | integer (null) | Product photos | `4` | `dim_product.photos_qty` | Null on 1 601 lines |
+| `photos_qty` | integer (null) | Product photos | `4` | `dim_product.photos_qty` | Null on 1601 lines |
 | `dims_imputed` | 0/1 | Weight or dimensions imputed | `0` | `dim_product.dims_imputed` | — |
 | `payment_type` | text | Code of the main payment type | `credit_card` | `dim_payment_type.payment_type` (via `payment_type_key`) | — |
 | `payment_label` | text | Payment type label | `Credit card` | `dim_payment_type.payment_label` | — |
@@ -277,7 +277,7 @@ Classification of the analytical variables (R5). Surrogate keys (`*_key`) and id
 
 ### `canceled` and `unavailable` statuses
 
-- The fact table **keeps every order status** present in the valid lines. In the last run: `delivered` 109 880 lines (96 211 orders), `shipped` 1 174, `canceled` 527 (448 orders), `processing` 355, `invoiced` 340 and `approved` 3.
+- The fact table **keeps every order status** present in the valid lines. In the last run: `delivered` 109880 lines (96211 orders), `shipped` 1174, `canceled` 527 (448 orders), `processing` 355, `invoiced` 340 and `approved` 3.
 - `canceled`: stays in the fact table with `is_completed = 0`, `delivery_data_missing = 0` and every delivery metric null (even if the source has a delivery date: rule `non_delivered_with_delivery_date`). It does not count in `orders_per_100k`.
 - `unavailable` (and `created`): they are in the `dim_order_status` catalog but **have no lines** in the fact table of the last run: their orders have no items in the source (counted in `orders_without_items`) or fall outside the period. If they appeared, they would be treated like any other non-delivered status.
 - The delivery metrics (`delivery_days`, `delay_days`, `is_late`, `delay_band`) only exist for `delivered` orders with `delivery_data_missing = 0`. **Late delivery rate denominator:** distinct orders with a non-null `is_late`.
@@ -293,7 +293,7 @@ Classification of the analytical variables (R5). Surrogate keys (`*_key`) and id
 
 | Column | Where | When it is null | Count (last run) |
 | :-- | :-- | :-- | --: |
-| `delivered_date_key` | fact | No valid delivery (status other than `delivered`, or flag 1) | 2 407 lines |
+| `delivered_date_key` | fact | No valid delivery (status other than `delivered`, or flag 1) | 2407 lines |
 | `payment_type_key` | fact | Order without valid payments | 0 lines |
 | `review_score` | fact and flat | Order without a valid review | 936 lines (744 orders) |
 | `photos_qty` | `dim_product` and flat | Missing in the source | 610 products |
@@ -302,7 +302,7 @@ All four are allowed with no "unknown" members in the dimensions; `validate` ign
 
 ### Do not sum or average order-level fields at line level
 
-The fact table has a **line** grain: an order with several lines (9 767 orders in the last run) repeats the order's values on each of them. These fields **are repeated on every line of the order**: `payment_value_order`, `installments`, `review_score`, `is_negative_review`, `delay_days`, `delivery_days` and `promised_days` (and, in the flat table, also `population_2018` and `orders_per_100k`).
+The fact table has a **line** grain: an order with several lines (9767 orders in the last run) repeats the order's values on each of them. These fields **are repeated on every line of the order**: `payment_value_order`, `installments`, `review_score`, `is_negative_review`, `delay_days`, `delivery_days` and `promised_days` (and, in the flat table, also `population_2018` and `orders_per_100k`).
 
 - They are **never** summed or averaged directly over the lines: that over-represents orders with more lines.
 - They are aggregated **per order**: distinct count of `order_id` (in Power BI, `DISTINCTCOUNT` / `AVERAGEX` over `VALUES(order_id)`), or by deduplicating on `order_id` before averaging (in pandas, `drop_duplicates("order_id")`).
@@ -310,7 +310,7 @@ The fact table has a **line** grain: an order with several lines (9 767 orders i
 
 ### Distinct customers
 
-**Distinct customers = distinct count of `customer_unique_id`** (95 121 in the last run). `customer_id` identifies the customer of one order, and its distinct count equals the number of orders (98 353). Repeat purchases are measured by grouping on `customer_unique_id`.
+**Distinct customers = distinct count of `customer_unique_id`** (95121 in the last run). `customer_id` identifies the customer of one order, and its distinct count equals the number of orders (98353). Repeat purchases are measured by grouping on `customer_unique_id`.
 
 ### Source
 
@@ -318,7 +318,7 @@ Olist data, *Brazilian E-Commerce Public Dataset by Olist* (Kaggle, `olistbr/bra
 
 ### Known limitations
 
-- **Period:** only purchases from 2017-01-01 to 2018-08-31 (the first purchase present is from 2017-01-05 and the last from 2018-08-29). Undelivered orders (for example, 1 097 `shipped`, spread over the whole period) are left out of the delivery metrics.
+- **Period:** only purchases from 2017-01-01 to 2018-08-31 (the first purchase present is from 2017-01-05 and the last from 2018-08-29). Undelivered orders (for example, 1097 `shipped`, spread over the whole period) are left out of the delivery metrics.
 - **Approximate coordinates:** coordinates are ZIP-prefix centroids (5 digits), not exact addresses, and `distance_km` is a straight-line distance, not the real route. 555 lines have no distance because the customer's or the seller's ZIP has no geolocation.
 - **Source inconsistencies:** Olist contains some inconsistent city/UF combinations that the ETL does not fix (for example, the first line has a seller in `Volta Redonda` with UF `SP`).
 - **Static population:** `population_2018` is the 2018 estimate and is used for the whole period; `orders_per_100k` is static (computed once over the full fact table) and does not change with filters.

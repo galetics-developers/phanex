@@ -8,7 +8,7 @@ This repository contains a reproducible Python ETL pipeline that builds a star s
 
 - **Analysis period:** purchases from 2017-01-01 00:00:00 to 2018-08-31 23:59:59 (both inclusive).
 - **Currency:** Brazilian real (BRL, R$), not converted.
-- **Fact table grain:** one order line (`fact_order_items`, 112 279 rows in the last run).
+- **Fact table grain:** one order line (`fact_order_items`, 112279 rows in the last run).
 
 **Quick start:** follow [`docs/08-setup-and-run.md`](docs/08-setup-and-run.md) to set up the environment, extract the Olist data and run the pipeline.
 
@@ -18,7 +18,7 @@ This repository contains a reproducible Python ETL pipeline that builds a star s
 
 | Document | Contents |
 | :-- | :-- |
-| [`docs/01-project-manual.md`](docs/01-project-manual.md) | Deviations from the project guide and team principles applied |
+| [`docs/01-project-manual.md`](docs/01-project-manual.md) | Design decisions and team principles applied |
 | [`docs/02-data-dictionary.md`](docs/02-data-dictionary.md) | Every column of the model with its source and formula |
 | [`docs/03-data-quality-report.md`](docs/03-data-quality-report.md) | Quality rules, checks and ad hoc queries |
 | [`docs/04-star-schema.md`](docs/04-star-schema.md) | Star schema relationships, cardinalities and keys |

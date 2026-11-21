@@ -13,7 +13,7 @@ How to prepare the environment, extract the Olist source data, run the ETL pipel
 
 ## 2. Python dependencies
 
-All Python dependencies are listed in `requirements.txt` and are installed with a single command (section 3):
+All Python dependencies are listed in `requirements.txt` and are installed with a single command:
 
 - `pandas>=2.2`
 - `numpy>=1.26`
@@ -82,7 +82,7 @@ Keep the archive. The extracted CSV files are ignored by Git and are not version
 Get-FileHash -Algorithm SHA256 data\raw\olist\IT91_CSV_Olist_Data_Original_ECBD.zip
 ```
 
-The command must return `967e41e04fc306fe604e2a693f488995a8b41e5047418f8a5c8e4abd6deca784` (PowerShell prints it in uppercase; the comparison is not case-sensitive). The SHA-256 hashes of the extracted CSV files are listed in [`03-data-quality-report.md`](03-data-quality-report.md#4-rf-18-dataraw-is-not-modified-h) (section 4) and can be checked the same way, for example `Get-FileHash -Algorithm SHA256 data\raw\olist\*.csv`. A different hash means a corrupted or altered download: download it again.
+The command must return `967e41e04fc306fe604e2a693f488995a8b41e5047418f8a5c8e4abd6deca784` (PowerShell prints it in uppercase; the comparison is not case-sensitive). The SHA-256 hashes of the extracted CSV files are listed in [`03-data-quality-report.md`](03-data-quality-report.md#4-dataraw-is-not-modified) and can be checked the same way, for example `Get-FileHash -Algorithm SHA256 data\raw\olist\*.csv`. A different hash means a corrupted or altered download: download it again.
 
 ## 5. Other inputs
 
@@ -99,7 +99,7 @@ The command runs `extract → clean → enrich → model → validate → load`,
 | Outcome | What happens |
 | :-- | :-- |
 | **Success** | Writes the 10 model files to `data/processed/`: `fact_order_items.csv`, seven `dim_*.csv` dimensions, `analytics_flat.csv.gz` (flat table compressed with gzip because the plain CSV exceeded 50 MB) and `data_quality_report.csv` (log of 45 rules with columns `stage, rule, rows_affected, action`) |
-| **An input is missing** | The pipeline stops at `extract`, lists every problem and the expected folder (for example `data/raw/olist/`) and writes nothing. Extract the archive as described in section 4 |
+| **An input is missing** | The pipeline stops at `extract`, lists every problem and the expected folder (for example `data/raw/olist/`) and writes nothing. |
 | **A `validate` rule fails** | `data/processed/` is not touched; the full log is written to `data/interim/data_quality_report_failed.csv` (not versioned) and the exit code is non-zero, naming the failed rules |
 
 ## 7. Reading the flat table
@@ -123,7 +123,7 @@ Each column is described in [`02-data-dictionary.md`](02-data-dictionary.md) and
 | `ruff check .` | Lints the whole repository with the rules in `ruff.toml` (0 errors expected) |
 | `python scripts/build_themes.py` | Regenerates the Power BI theme (`apps/bi-dashboard/theme/ecbd-theme.json`) from `packages/design-system/tokens.json` |
 | `python scripts/kpi_reference.py` | Computes the dashboard KPIs from `data/processed/` and writes `apps/bi-dashboard/validation/kpi_reference.csv` |
-| `python scripts/run_notebook.py` | Executes the notebook, regenerates its script twin and runs the final checks (section 10) |
+| `python scripts/run_notebook.py` | Executes the notebook, regenerates its script twin and runs the final checks |
 
 `scripts/build_ibge_population.py` is the helper that generated the IBGE population file; it needs network access and is not part of the pipeline.
 

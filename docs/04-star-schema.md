@@ -123,7 +123,7 @@ The 9 relationships go from the dimension (one side) to the fact table (many sid
 | # | Dimension (key, one side) | Fact (foreign key, many side) | Cardinality | Direction | Status | Nulls in the foreign key |
 | --: | :-- | :-- | :-- | :-- | :-- | :-- |
 | 1 | `dim_date.date_key` | `fact_order_items.purchase_date_key` | 1:* | Single (dim → fact) | **Active** | No |
-| 2 | `dim_date.date_key` | `fact_order_items.delivered_date_key` | 1:* | Single (dim → fact) | **Inactive** (`USERELATIONSHIP`) | Yes: no valid delivery (2 407 lines) |
+| 2 | `dim_date.date_key` | `fact_order_items.delivered_date_key` | 1:* | Single (dim → fact) | **Inactive** (`USERELATIONSHIP`) | Yes: no valid delivery (2407 lines) |
 | 3 | `dim_date.date_key` | `fact_order_items.estimated_date_key` | 1:* | Single (dim → fact) | **Inactive** (`USERELATIONSHIP`) | No |
 | 4 | `dim_customer.customer_key` | `fact_order_items.customer_key` | 1:* | Single (dim → fact) | Active | No |
 | 5 | `dim_state.customer_state_key` | `fact_order_items.customer_state_key` | 1:* | Single (dim → fact) | Active | No |
@@ -151,14 +151,14 @@ The 9 relationships go from the dimension (one side) to the fact table (many sid
 
 Surrogate keys are deterministic integers: with the same inputs, every run assigns the same keys. There are no "unknown" members: the nullable foreign keys (`delivered_date_key`, `payment_type_key`) are left empty.
 
-**Grain:** one order line. Order-level measures (orders, average ticket, average delay, average score) must be aggregated by `order_id` (`DISTINCTCOUNT` / `AVERAGEX`), because the order fields are repeated on every line (see `docs/02`, §12).
+**Grain:** one order line. Order-level measures (orders, average ticket, average delay, average score) must be aggregated by `order_id` (`DISTINCTCOUNT` / `AVERAGEX`), because the order fields are repeated on every line.
 
 ## 4. Geographic hierarchy
 
 - The drill-down hierarchy is **`region` → `state` → `city`**, entirely within `dim_customer` (location of the order's customer).
 - `dim_state` is not part of that hierarchy: it provides the **2018 population** (`population_2018`) and the state **centroids** (`centroid_lat`, `centroid_lng`) for per-capita indicators and state maps.
 
-## 5. Deviations from the guide's schema (§6.6)
+## 5. Schema design decisions
 
 | Topic | Implementation | Reason |
 | :-- | :-- | :-- |
