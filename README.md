@@ -18,7 +18,7 @@ This repository contains a reproducible Python ETL pipeline that builds a star s
 
 | Document | Contents |
 | :-- | :-- |
-| [`docs/01-project-manual.md`](docs/01-project-manual.md) | Deviations from the project guide and team principles applied |
+| [`docs/01-project-manual.md`](docs/01-project-manual.md) | Design decisions and team principles applied |
 | [`docs/02-data-dictionary.md`](docs/02-data-dictionary.md) | Every column of the model with its source and formula |
 | [`docs/03-data-quality-report.md`](docs/03-data-quality-report.md) | Quality rules, checks and ad hoc queries |
 | [`docs/04-star-schema.md`](docs/04-star-schema.md) | Star schema relationships, cardinalities and keys |

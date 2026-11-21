@@ -37,8 +37,8 @@ written directly in a notebook cell, in a DAX measure or in a slide is a defect.
 
 ## 3. Data color rules
 
-These rules are mandatory. They come from the course guide and from the accessibility principle
-of the project constitution.
+These rules are mandatory. They follow the course requirements and the accessibility principle of
+the team.
 
 | Kind of data | Palette | Where it is used |
 | :-- | :-- | :-- |
@@ -106,7 +106,7 @@ already passed the accessibility checks of its own deliverable.
 
 ## 7. How a visual change is approved
 
-1. The change is described in the active spec, with the rule it affects.
+1. The change is described in the pull request, with the rule it affects.
 2. The themes are regenerated from the tokens if a value changed.
 3. Each affected page or figure is exported and checked in a color blindness simulator
    ([Coblis](https://www.color-blindness.com/coblis-color-blindness-simulator/)) for protanopia,

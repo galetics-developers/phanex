@@ -200,9 +200,9 @@ Flat table for the notebook: one row per order line, in the same order and with 
 | `promised_days` | decimal (null) | Promised days | `15.625671296296296` | `fact_order_items.promised_days` | `(estimated − purchase) / 1 day` |
 | `delay_days` | integer (null) | Days of delay (negative = early) | `-9` | `fact_order_items.delay_days` | `date(delivery) − date(estimated)` |
 | `is_late` | 0/1 (null) | Late delivery | `0` | `fact_order_items.is_late` | `delay_days > 0` |
-| `delay_band` | text (null) | Delay band | `-9 to -1 (early)` | `fact_order_items.delay_band` | Bands of section 1 |
+| `delay_band` | text (null) | Delay band | `-9 to -1 (early)` | `fact_order_items.delay_band` | — |
 | `delay_band_order` | integer (null) | Order 1–5 of the band | `2` | `fact_order_items.delay_band_order` | — |
-| `delivery_data_missing` | 0/1 | Invalid-delivery flag | `0` | `fact_order_items.delivery_data_missing` | See section 1 |
+| `delivery_data_missing` | 0/1 | Invalid-delivery flag | `0` | `fact_order_items.delivery_data_missing` | — |
 | `review_score` | integer (null) | Review score (repeated per line) | `5` | `fact_order_items.review_score` | Most recent review |
 | `is_negative_review` | 0/1 (null) | Negative review (repeated per line) | `0` | `fact_order_items.is_negative_review` | `review_score <= 2` |
 | `distance_km` | decimal (null) | Seller–customer distance in km | `301.22920531102295` | `fact_order_items.distance_km` | Haversine |

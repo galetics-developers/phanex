@@ -63,7 +63,7 @@ Annotated tree of the repository, with one comment per entry. Large folders (the
 │   ├── figures/{png,svg}/                  # 15 static figures, each as a 300 dpi PNG and an SVG
 │   └── interactive/                        # 7 interactive Plotly HTML files with plotly.js embedded
 ├── docs/                                   # Project documentation
-│   ├── 01-project-manual.md                # Deviations from the guide and team principles
+│   ├── 01-project-manual.md                # Design decisions and team principles
 │   ├── 02-data-dictionary.md               # Every column with its source and formula
 │   ├── 03-data-quality-report.md           # Quality rules, checks and ad hoc queries
 │   ├── 04-star-schema.md                   # Model relationships, cardinalities and keys
